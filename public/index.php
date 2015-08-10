@@ -29,15 +29,18 @@
     </style>
 </head>
 <body>
-    <header>
-
-
-
-
-
-
-
-
+    <header class="navbar navbar-default navbar-fixed-top">
+        <div>
+            <div id='logo'>
+                <p>LOGO Goes Here</p>
+            </div>
+            <div id='register'>
+                <p>Register<p>
+            </div>
+            <div id='login'>
+                <p>Login</p>
+            </div>
+        </div>
 
     </header>
     
@@ -53,13 +56,11 @@
 
 
     
-    <footer>
-
-
-
-
-
-
+    <footer class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <p>&copy The Tool Shed</p>
+            <p>About</p>
+        </div>
     </footer>
 </body>
 </html>

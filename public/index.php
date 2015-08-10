@@ -26,19 +26,29 @@
         #mainFormLabel {
             font-size: 1em;
         }
+        header div {
+            display:inline-block;
+            padding:5px;
+
+        }
+        footer div {
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
     <header class="navbar navbar-default navbar-fixed-top">
         <div>
             <div id='logo'>
-                <p>LOGO Goes Here</p>
+                <a href='#'>LOGO Goes Here</a>
             </div>
-            <div id='register'>
-                <p>Register<p>
-            </div>
-            <div id='login'>
-                <p>Login</p>
+            <div id='right-side'>
+                <div id='register'>
+                    <a href='#'>Register</a>
+                </div>
+                <div id='login'>
+                    <a href='#'>Login</a>
+                </div>
             </div>
         </div>
 
@@ -58,8 +68,11 @@
     
     <footer class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
-            <p>&copy The Tool Shed</p>
-            <p>About</p>
+            <div><a href='#'>&copy The Tool Shed</a></div>
+            <div><a href='#'>About</a></div>
+            <div><a href='#'>Terms of Use</a></div>
+            
+            
         </div>
     </footer>
 </body>

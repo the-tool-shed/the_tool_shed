@@ -1,6 +1,6 @@
 <?php
 
-class Logger
+class Log
 {
     private $filename;
     private $handle;
@@ -64,3 +64,4 @@ class Logger
     {
         $this->logMessage("ERROR", $message);
     }
+}

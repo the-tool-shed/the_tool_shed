@@ -1,3 +1,8 @@
+<?php 
+
+require_once "../views/partials/header.php";
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,29 +69,6 @@
     </style>
 </head>
 <body>
-    <div class='container'>
-        <header class="navbar navbar-default navbar-fixed-top">
-            <div>
-                <div id='logo'>
-                    <a href='#'>LOGO Goes Here</a>
-                </div>
-                <div id='center-search'>
-                    <form>
-                        <input type='text'>
-                        <button>Search</button>
-                    </form>
-                </div>
-                <div id='right-side'>
-                    <div id='register'>
-                        <a href='#'>Register</a>
-                    </div>
-                    <div id='login'>
-                        <a href='#'>Login</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-
         <div class="container-fluid">
             <div class="col-md-4">
                 <div class="span2">

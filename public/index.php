@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Tool Shed</title>
@@ -71,7 +72,7 @@
     </header>
     
     <h1 id="indexTitle">Tool Shed</h1>
-    <form id="mainForm">
+    <form id="mainForm" action="/ads.index.php">
             <p id="mainFormLabel">I want to learn...</p>
             <input id="mainSearch" type="text" name="search" placeholder="x" autofocus>
             <input id="searchSubmit" type="submit">

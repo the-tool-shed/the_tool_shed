@@ -1,3 +1,33 @@
+    <style type="text/css">
+        header {
+            text-align: center;
+        }
+
+        header div {
+            display:inline-block;
+            padding:5px;
+            height: 50px;
+            text-align: center;
+
+        }
+        #right-side {
+            display:inline-block;
+            padding:5px;
+            float:right;
+            margin-left: 385px;
+
+        }
+        #logo {
+            padding:10px;
+            margin-right: 385px;
+
+        }
+        #center-search {
+            padding:0px;
+            display: inline-block;
+        }
+
+    </style>
 <div class='container'>
     <header class="navbar navbar-default navbar-fixed-top">
         <div>

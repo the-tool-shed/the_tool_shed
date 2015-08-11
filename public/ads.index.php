@@ -60,6 +60,9 @@ require_once "../views/partials/footer.php";
         .col-md-4 button {
             margin-top: 30px;
         }
+        .col-md-8 {
+            padding-bottom: 100px;
+        }
         
 
 
@@ -86,72 +89,61 @@ require_once "../views/partials/footer.php";
                     </form>
                 </div>
             </div>
-            <div class='col-md-8'>
-                <div class="span10">
-                    <h3>TEACHERS</h3>
-                    <div class="well">
-                        <a href="ads.show.php">Here are all of the ads...</a>
+                <div class='col-md-8'>
+                    <div class="span10">
+                        <h3>TEACHERS</h3>
+                        <div class="well">
+                            <a href="ads.show.php">Here are all of the ads...</a>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here are all of the ads...</p>
+                        </div>
+                        <div class="well">
+                            <p>Here is the last ad...</p>
+                        </div>
                     </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-                    <div class="well">
-                        <p>Here are all of the ads...</p>
-                    </div>
-        
                 </div>
-            </div>
-            </div>
+
         </div>
-        
-        <footer class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container">
-                <div><a href='#'>About The Tool Shed</a></div>
-                <div><a href='#'>Terms of Use</a></div>
-                <div><a href='#'>&copy The Tool Shed. All Rights Reserved</a></div>
-                
-                
-            </div>
-        </footer>
-    </div>
+
 </body>
 </html>

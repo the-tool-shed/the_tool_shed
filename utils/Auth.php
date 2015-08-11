@@ -55,13 +55,13 @@ class Auth
 
     public static function redirect ()
     {
-        header("location: /login.php");
+        header("location: /auth.login.php");
         exit();  
     }
 
     public static function login ()
     {
-        header("location: /authorized.php");
+        header("location: /index.php");
         exit();
     }
 

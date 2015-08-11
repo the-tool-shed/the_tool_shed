@@ -57,6 +57,9 @@ require_once "../views/partials/indexheader.php";
             display: inline-block;
             padding: 15px;
         }
+        h1 {
+            color:darkorange;
+        }
     </style>
 </head>
 <body>

@@ -61,6 +61,9 @@ require_once "../views/partials/footer.php"
             text-align: left;
             padding-left: 30px;
         }
+        h5 {
+            clear:left;
+            margin-left: 30px;
         }
     </style>
  </head>
@@ -73,6 +76,7 @@ require_once "../views/partials/footer.php"
         <div class = "col-md-8">
             <div>
                 <h1 id="postTitle">Carpentry</h1>
+                <h5>San Antonio</h5>
             </div>
 
             <div id="postImg">
@@ -91,6 +95,8 @@ require_once "../views/partials/footer.php"
                 <li>dolore eu fugiat nulla</li>
                 <li>deserunt mollit anim</li>
             </ul>
+            <h4>Posted: (Date)</h4>
+            <h4>Expires: (Date)</h4>
         </div>
         <div id="postParagraph" class="col-md-8">
             <h3>About this class</h3>
@@ -100,17 +106,14 @@ require_once "../views/partials/footer.php"
             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div id="postUserRating">
+                <p>
+                    <span id="username">username </span> has a  <span id="rating"> 9.8 </span>  rating out of 10
+                </p>
+            </div>
         </div>
     </div>
 
-    <div id="postUserRating">
-        <div class="col-md-4"></div>
-        <div class="col-md-8">
-            <p>
-                <span id="username">username </span> has a  <span id="rating"> 9.8 </span>  rating out of 10
-            </p>
-        </div>
-    </div>
 
     <script>
         function goBack() {

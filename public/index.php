@@ -3,6 +3,9 @@
     <title>Tool Shed</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <style type="text/css">
+        body {
+            text-align: center;
+        }
         #indexTitle {
             text-align: center;
             font-size: 4em;
@@ -26,19 +29,42 @@
         #mainFormLabel {
             font-size: 1em;
         }
+        header div {
+            display:inline-block;
+            padding:5px;
+
+        }
+        #right-side {
+            display:inline-block;
+            padding:5px;
+            float:right;
+            margin-left: 1000px;
+
+        }
+        #logo {
+            
+            padding:10px;
+
+        }
+        footer div {
+            display: inline-block;
+            padding: 15px;
+        }
     </style>
 </head>
 <body>
     <header class="navbar navbar-default navbar-fixed-top">
         <div>
             <div id='logo'>
-                <p>LOGO Goes Here</p>
+                <a href='#'>LOGO Goes Here</a>
             </div>
-            <div id='register'>
-                <p>Register<p>
-            </div>
-            <div id='login'>
-                <p>Login</p>
+            <div id='right-side'>
+                <div id='register'>
+                    <a href='#'>Register</a>
+                </div>
+                <div id='login'>
+                    <a href='#'>Login</a>
+                </div>
             </div>
         </div>
 
@@ -58,8 +84,11 @@
     
     <footer class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
-            <p>&copy The Tool Shed</p>
-            <p>About</p>
+            <div><a href='#'>About The Tool Shed</a></div>
+            <div><a href='#'>Terms of Use</a></div>
+            <div><a href='#'>&copy The Tool Shed. All Rights Reserved</a></div>
+            
+            
         </div>
     </footer>
 </body>

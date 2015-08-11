@@ -15,7 +15,7 @@ class Log
     protected function setFilename($prefix)
     {
         if (is_string($prefix)) {
-            $this->filename = $prefix . '-' . date('Y-m-d') . '.txt';
+            $this->filename = '../txt/' . $prefix . '-' . date('Y-m-d') . '.txt';
             $this->setHandle($this->filename);
         } else {
             die('Prefix was not a string.' . PHP_EOL);

@@ -1,6 +1,7 @@
 <?php 
 
 require_once "../views/partials/header.php";
+require_once "../views/partials/footer.php";
 
 ?>
 <!DOCTYPE html>
@@ -34,10 +35,6 @@ require_once "../views/partials/header.php";
         #center-search {
             padding:0px;
             display: inline-block;
-        }
-        footer div {
-            display: inline-block;
-            padding: 15px;
         }
         button {
             margin-left: 5px;
@@ -93,7 +90,7 @@ require_once "../views/partials/header.php";
                 <div class="span10">
                     <h3>TEACHERS</h3>
                     <div class="well">
-                        <p>Here are all of the ads...</p>
+                        <a href="ads.show.php">Here are all of the ads...</a>
                     </div>
                     <div class="well">
                         <p>Here are all of the ads...</p>

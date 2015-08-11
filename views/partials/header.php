@@ -2,7 +2,7 @@
     <header class="navbar navbar-default navbar-fixed-top">
         <div>
             <div id='logo'>
-                <a href='#'>LOGO Goes Here</a>
+                <a href='index.php'>LOGO Goes Here</a>
             </div>
             <div id='center-search'>
                 <form>

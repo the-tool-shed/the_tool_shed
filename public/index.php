@@ -1,3 +1,9 @@
+<?php  
+
+require_once "../views/partials/footer.php";
+require_once "../views/partials/indexheader.php";
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,22 +60,7 @@
     </style>
 </head>
 <body>
-    <header class="navbar navbar-default navbar-fixed-top">
-        <div>
-            <div id='logo'>
-                <a href='#'>LOGO Goes Here</a>
-            </div>
-            <div id='right-side'>
-                <div id='register'>
-                    <a href='#'>Register</a>
-                </div>
-                <div id='login'>
-                    <a href='#'>Login</a>
-                </div>
-            </div>
-        </div>
-
-    </header>
+    
     
     <h1 id="indexTitle">Tool Shed</h1>
     <form id="mainForm" action="/ads.index.php">
@@ -77,20 +68,5 @@
             <input id="mainSearch" type="text" name="search" placeholder="x" autofocus>
             <input id="searchSubmit" type="submit">
     </form>
-
-
-
-
-
-    
-    <footer class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <div><a href='#'>About The Tool Shed</a></div>
-            <div><a href='#'>Terms of Use</a></div>
-            <div><a href='#'>&copy The Tool Shed. All Rights Reserved</a></div>
-            
-            
-        </div>
-    </footer>
 </body>
 </html>

@@ -3,8 +3,7 @@
 session_start();
 $sessionId = session_id();
 
-require_once '../Input.php';
-require_once '../Auth.php';
+require_once "../bootstrap.php";
 
 Auth::logout();
 

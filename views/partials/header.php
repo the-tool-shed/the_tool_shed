@@ -26,6 +26,15 @@
             padding:0px;
             display: inline-block;
         }
+        .search-input {
+            height: 30px;
+            font-size: 120%;
+            color: #5a5854;
+            background-color: #f2f2f2;
+            border: 1px solid #bdbdbd;
+            border-radius: 5px;
+            padding: 2px 2px 2px 30px;
+        }
 
     </style>
 <div class='container'>
@@ -36,16 +45,16 @@
             </div>
             <div id='center-search'>
                 <form>
-                    <input type='text'>
-                    <button>Search</button>
+                    <input type='text' class='search-input'>
+                    <button class="btn">Search</button>
                 </form>
             </div>
             <div id='right-side'>
                 <div id='register'>
-                    <a href='#'>Register</a>
+                    <a href='users.create.php'>Register</a>
                 </div>
                 <div id='login'>
-                    <a href='#'>Login</a>
+                    <a href='auth.login.php'>Login</a>
                 </div>
             </div>
         </div>

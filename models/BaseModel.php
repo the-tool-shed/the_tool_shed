@@ -4,6 +4,7 @@ class BaseModel
 {
     protected static $dbc;
     protected static $table;
+    public $attributes = array();
 
     public function __construct()
     {

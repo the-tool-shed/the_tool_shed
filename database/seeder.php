@@ -5,19 +5,19 @@
 
     echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . PHP_EOL;
 
-    $truncate = 'DELETE FROM users';
+    $truncate = 'TRUNCATE users';
     $dbc->exec($truncate);
 
-    $truncate = 'DELETE FROM passwords';
+    $truncate = 'TRUNCATE passwords';
     $dbc->exec($truncate);
 
-    $truncate = 'DELETE FROM cities';
+    $truncate = 'TRUNCATE cities';
     $dbc->exec($truncate);
 
-    $truncate = 'DELETE FROM categories';
+    $truncate = 'TRUNCATE categories';
     $dbc->exec($truncate);
 
-    $truncate = 'DELETE FROM posts';
+    $truncate = 'TRUNCATE posts';
     $dbc->exec($truncate);
 
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////

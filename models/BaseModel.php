@@ -1,6 +1,6 @@
 <?php 
 
-class Model
+class BaseModel
 {
     protected static $dbc;
     protected static $table;

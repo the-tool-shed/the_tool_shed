@@ -1,6 +1,7 @@
 <?php  
 
 require_once "../bootstrap.php";
+
 require_once "../views/partials/indexheader.php";
 
 ?>

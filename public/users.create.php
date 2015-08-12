@@ -41,11 +41,13 @@ require_once "../views/partials/footer.php";
 <body>
 	<div class='jumbotron'>
 	<h1>Sign Up <small> It's Free!</small></h1>
-		<input class='user-inputs' type='text' name='username' placeholder='Enter Username' required="required" autofocus ><br>
-		<input class='user-inputs' type='email' name='email' placeholder='Enter Email Address' required="required" ><br>
-		<input class='user-inputs' type='password' name='password' placeholder='Enter Password' required="required" ><br>
-		<input class='user-inputs' type='password' name='confirm-password' placeholder='Confirm Password' required="required" >
-		<input type="submit" class="btn" id='submitbtn'>
+		<form>
+			<input class='user-inputs' type='text' name='username' placeholder='Enter Username' required="required" autofocus ><br>
+			<input class='user-inputs' type='email' name='email' placeholder='Enter Email Address' required="required" ><br>
+			<input class='user-inputs' type='password' name='password' placeholder='Enter Password' required="required" ><br>
+			<input class='user-inputs' type='password' name='confirm-password' placeholder='Confirm Password' required="required" >
+			<input type="submit" class="btn" id='submitbtn'>
+		</form>
 	</div>
 </body>
 </html>

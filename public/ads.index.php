@@ -3,6 +3,17 @@
 require_once "../views/partials/header.php";
 require_once "../views/partials/footer.php";
 
+$ads = [
+
+    ['username'=> 'Peter', 'email' => 'peter@gmail.com', 'city' => 'San Antonio', 'subject'=> 'coding'],
+    ['username'=> 'Bjorn', 'email' => 'bjorn@gmail.com', 'city' => 'Houston', 'subject'=> 'boating'],
+    ['username'=> 'John', 'email' => 'john@gmail.com', 'city' => 'Dallas', 'subject'=> 'horse-back riding']
+
+
+
+
+];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,48 +106,14 @@ require_once "../views/partials/footer.php";
                         <div class="well">
                             <a href="ads.show.php">Here are all of the ads...</a>
                         </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
+                        <? foreach($ads as $ad): ?>
+                        <div class='well'>
+                            <p><?=$ad['username'] ?></p>
+                            <a href="https://en.wikipedia.org/wiki/Peter_Bjorn_and_John"<p><?=$ad['email'] ?></p></a>
+                            <p><?=$ad['city'] ?></p>
+                            <p><?=$ad['subject'] ?></p>
                         </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
-                        <div class="well">
-                            <p>Here are all of the ads...</p>
-                        </div>
+                        <? endforeach; ?>
                         <div class="well">
                             <p>Here is the last ad...</p>
                         </div>

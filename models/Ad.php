@@ -1,10 +1,27 @@
 <?php
 
-require_once '../bootstrap.php';
+require_once 'BaseModel.php';
 
 class Ad extends BaseModel
 {
     protected static $table = 'posts';
+
+    public static function all()
+    {
+        // get all rows
+        self::dbConnect();
+        $stmt = self::$dbc->query(
+            'SELECT u.username AS username, c.city AS city, ca.category AS category,
+                p.post_date, p.expire_date, p.highlights, p.description, p.img_url FROM posts AS p 
+                LEFT JOIN cities AS c ON p.city_id = c.id
+                LEFT JOIN users AS u ON p.user_id = u.id
+                LEFT JOIN categories AS ca ON p.category_id = ca.id'
+        );
+
+        // assign results to variable
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
     public static function catergorySearch($category)
     {
@@ -83,32 +100,44 @@ class Ad extends BaseModel
 
     public function update()
     {   
-        $query = 'UPDATE users
-                    SET user_name = :username
-                    email = :email
+        $query = 'UPDATE posts
+                    SET user_id = :user_id
                     city_id = :city_id
-                    join_date = :join_date
+                    category_id = :category_id
+                    post_date = :post_date
+                    expire_date = :expire_date
+                    highlights = :highlights
+                    description = :description
+                    img_url = :img_url
                     WHERE id = :id';
 
         $stmt = self::$dbc->prepare($query);
-        $stmt->bindValue(':username',   $this->attributes['username'],     PDO::PARAM_STR);
-        $stmt->bindValue(':email',      $this->attributes['email'],        PDO::PARAM_STR);
-        $stmt->bindValue(':city_id',    $this->attributes['city_id'],      PDO::PARAM_INT);
-        $stmt->bindValue(':join_date',  $this->attributes['join_date '],   PDO::PARAM_STR);
+        $stmt->bindValue(':user_id',        $this->attributes['user_id'],      PDO::PARAM_INT);
+        $stmt->bindValue(':city_id',        $this->attributes['city_id'],      PDO::PARAM_INT);
+        $stmt->bindValue(':category_id',    $this->attributes['category_id'],  PDO::PARAM_INT);
+        $stmt->bindValue(':post_date',      $this->attributes['post_date'],    PDO::PARAM_STR);
+        $stmt->bindValue(':expire_date',    $this->attributes['expire_date'],  PDO::PARAM_STR);
+        $stmt->bindValue(':highlights',     $this->attributes['highlights '],  PDO::PARAM_STR);
+        $stmt->bindValue(':description',    $this->attributes['description'],  PDO::PARAM_STR);
+        $stmt->bindValue(':img_url',        $this->attributes['img_url'],      PDO::PARAM_STR);
         
-        $stmt->bindValue(':id',     $id, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
 
     public function insert()
     {
-        $query = 'INSERT INTO users (username, email, city_id, join_date) 
-            VALUES (:username, :email, :city_id, :join_date)';
+        $query = 'INSERT INTO posts (user_id, city_id, category_id, post_date, expire_date, highlights, description, img_url) 
+            VALUES (:user_id, :category_id, :city_id, :post_date, :expire_date, :highlights, :description, :img_url)';
         $stmt = self::$dbc->prepare($query);
-        $stmt->bindValue(':username',   $this->attributes['username'],     PDO::PARAM_STR);
-        $stmt->bindValue(':email',      $this->attributes['email'],        PDO::PARAM_STR);
-        $stmt->bindValue(':city_id',    $this->attributes['city_id'],      PDO::PARAM_INT);
-        $stmt->bindValue(':join_date',  $this->attributes['join_date '],   PDO::PARAM_STR);
+        $stmt->bindValue(':user_id',      $this->attributes['user_id'],     PDO::PARAM_INT);
+        $stmt->bindValue(':city_id',      $this->attributes['city_id'],     PDO::PARAM_INT);
+        $stmt->bindValue(':category_id',  $this->attributes['category_id'], PDO::PARAM_INT);
+        $stmt->bindValue(':post_date',    $this->attributes['post_date'],   PDO::PARAM_STR);
+        $stmt->bindValue(':expire_date',  $this->attributes['expire_date'], PDO::PARAM_STR);
+        $stmt->bindValue(':highlights',   $this->attributes['highlights'],  PDO::PARAM_STR);
+        $stmt->bindValue(':description',  $this->attributes['description'], PDO::PARAM_STR);
+        $stmt->bindValue(':img_url',      $this->attributes['img_url'],     PDO::PARAM_STR);
 
         $stmt->execute();
     }

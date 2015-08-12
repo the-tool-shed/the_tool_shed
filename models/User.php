@@ -1,10 +1,25 @@
 <?php
 
-require_once '../bootstrap.php';
+require_once 'BaseModel.php';
 
 class User extends BaseModel
 {
     protected static $table = 'users';
+
+    public static function all()
+    {
+        // get all rows
+        self::dbConnect();
+        $stmt = self::$dbc->query(
+            'SELECT u.username, u.email, c.city, u.join_date 
+            FROM users AS u
+            LEFT JOIN cities AS c ON u.city_id = c.id'
+        );
+
+        // assign results to variable
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
     public static function find($username)
     {
@@ -54,7 +69,7 @@ class User extends BaseModel
         $stmt->bindValue(':city_id',    $this->attributes['city_id'],      PDO::PARAM_INT);
         $stmt->bindValue(':join_date',  $this->attributes['join_date '],   PDO::PARAM_STR);
         
-        $stmt->bindValue(':id',     $id, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
 
@@ -66,7 +81,7 @@ class User extends BaseModel
         $stmt->bindValue(':username',   $this->attributes['username'],     PDO::PARAM_STR);
         $stmt->bindValue(':email',      $this->attributes['email'],        PDO::PARAM_STR);
         $stmt->bindValue(':city_id',    $this->attributes['city_id'],      PDO::PARAM_INT);
-        $stmt->bindValue(':join_date',  $this->attributes['join_date '],   PDO::PARAM_STR);
+        $stmt->bindValue(':join_date',  $this->attributes['join_date'],   PDO::PARAM_STR);
 
         $stmt->execute();
     }

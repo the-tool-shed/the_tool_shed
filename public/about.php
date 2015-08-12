@@ -46,7 +46,7 @@ require_once "../views/partials/footer.php";
 	</div>
 
 	<div id='founders'>
-		<h3>The <em>People</em> Behind the Tool Shed</h3>
+		<h3>The Founders</h3>
 		<div id='christian' class='col-md-6'>
 			<h4>Christian Tobias</h4>		
 			<p>Some short bio...</p>

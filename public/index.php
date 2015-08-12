@@ -45,7 +45,7 @@ require_once "../views/partials/indexheader.php";
             display:inline-block;
             padding:5px;
             float:right;
-            margin-left: 1000px;
+            margin-left: 1070px;
 
         }
         #logo {
@@ -64,12 +64,13 @@ require_once "../views/partials/indexheader.php";
 </head>
 <body>
     
-    
-    <h1 id="indexTitle">Tool Shed</h1>
-    <form id="mainForm" action="/ads.index.php">
-            <p id="mainFormLabel">I want to learn...</p>
-            <input id="mainSearch" type="text" name="search" placeholder="x" autofocus>
-            <input id="searchSubmit" type="submit">
-    </form>
+    <div class='jumbotron'>
+        <h1 id="indexTitle">Tool Shed</h1>
+        <form id="mainForm" action="/ads.index.php">
+                <p id="mainFormLabel">I want to learn...</p>
+                <input id="mainSearch" type="search" name="search" placeholder="x" autofocus>
+                <input id="searchSubmit" type="submit">
+        </form>
+    </div>
 </body>
 </html>

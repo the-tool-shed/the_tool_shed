@@ -2,10 +2,8 @@
     session_start();
     $sessionId = session_id();
 
-    require_once '../utils/Input.php';
-    require_once '../utils/Auth.php';
+    require_once "../bootstrap.php";
     require_once "../views/partials/header.php";
-    require_once "../views/partials/footer.php";
 
     if (Input::has('username') && Input::has('password')) {
         Auth::attempt(Input::get('username'), Input::get('password'));

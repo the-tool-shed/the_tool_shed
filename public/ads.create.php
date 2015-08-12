@@ -52,6 +52,7 @@ require_once "../views/partials/footer.php";
 	<div class='jumbotron'>
 	<h1>Become A Teacher</h1>
 	<h2>Knowledge is Power</h2>
+		<form>
 		<input class='user-inputs' type='text' name='email' placeholder='Enter Email Address' required="required" ><br>
 		<input class='user-inputs' type='text' name='subject' placeholder='Enter Subject' required="required" autofocus ><br>
 		<textarea  class='user-inputs' id='postParagraph' placeholder='Enter A Description of Your Course'></textarea>
@@ -61,6 +62,7 @@ require_once "../views/partials/footer.php";
 			<input type="submit" value="Upload" />
 		</form>
 		<input type="submit" class="btn" id='submitbtn'>
+		</form>
 	</div>
 
 </body>

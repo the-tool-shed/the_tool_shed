@@ -29,11 +29,6 @@ require_once "../views/partials/footer.php";
 	h4 {
 		text-decoration: underline;
 	}
-	#backBtn {
-            margin-top: 2%;
-            margin-left: 2%;
-            /*float: left;*/
-        }
 
 	</style>
 
@@ -56,12 +51,6 @@ require_once "../views/partials/footer.php";
 			<p>Some short bio...</p>
 		</div>
 	</div>
-	<button class="btn btn-lg" id="backBtn" onclick="goBack()">Back</button>
 
-	<script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
 </body>
 </html>

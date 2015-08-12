@@ -1,7 +1,7 @@
 <?php 
 
-// require_once "../views/partials/header.php"
-require_once "../views/partials/footer.php"
+require_once "../views/partials/header.php";
+require_once "../views/partials/footer.php";
 
  ?>
 
@@ -12,8 +12,9 @@ require_once "../views/partials/footer.php"
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <style type="text/css">
         #backBtn {
-            margin-top: 2%;
+            margin-top: 10%;
             margin-left: 2%;
+            position:absolute;
             /*float: left;*/
         }
 
@@ -65,12 +66,15 @@ require_once "../views/partials/footer.php"
             clear:left;
             margin-left: 30px;
         }
+        .jumbotron {
+        margin-top: 70px;
+        }
     </style>
  </head>
  <body>
 
     <button class="btn btn-lg" id="backBtn" onclick="goBack()">Back</button>
-
+<div class='jumbotron'>
     <div id="postHeader" class ="row">
         <div class="col-md-4"></div>
         <div class = "col-md-8">
@@ -113,6 +117,7 @@ require_once "../views/partials/footer.php"
             </div>
         </div>
     </div>
+</div>
 
 
     <script>

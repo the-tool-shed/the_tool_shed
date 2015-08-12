@@ -1,38 +1,162 @@
 <?php
 
-    require_once 'parks_config.php'; //configs for db
+    require_once 'toolshed_config.php'; //configs for db
     require_once 'db_connect.php'; //db connection
 
     echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . PHP_EOL;
 
-    $truncate = 'TRUNCATE national_parks';
-
+    $truncate = 'DELETE FROM users';
     $dbc->exec($truncate);
 
-    $parks = [
-        ['name' => 'Acadia'             ,'location' => 'ME'  ,'date_established' => '1919-02-26' ,'area_in_acres' => 47389.67     ,'description' => 'Features tallest mountain on Atlantic coast of the U.S.'],
-        ['name' => 'Arches'             ,'location' => 'UT'  ,'date_established' => '1988-10-31' ,'area_in_acres' => 9000.00      ,'description' => 'Features more than 2,000 natural sandstone arches.'],
-        ['name' => 'Badlands'           ,'location' => 'SD'  ,'date_established' => '1978-11-10' ,'area_in_acres' => 242755.94    ,'description' => 'A collection of buttes, pinnacles, spires, and grass praries.'],
-        ['name' => 'Big Bend'           ,'location' => 'TX'  ,'date_established' => '1944-06-12' ,'area_in_acres' => 801163.21    ,'description' => 'Named for the prominent bend in the Rio Grande river.'],
-        ['name' => 'Carlsbad Caverns'   ,'location' => 'NM'  ,'date_established' => '1930-05-14' ,'area_in_acres' => 46766.45     ,'description' => 'Includes 117 caves, the longest of which is over 120 miles long.'],
-        ['name' => 'Crater Lake'        ,'location' => 'OR'  ,'date_established' => '1902-05-22' ,'area_in_acres' => 183224.05    ,'description' => 'The deepest lake in the U.S. lies in the caldera of an ancient volcano.'],
-        ['name' => 'Denali'             ,'location' => 'AL'  ,'date_established' => '1917-02-26' ,'area_in_acres' => 4740911.72   ,'description' => 'Centered around Mt. McKinley, the tallest in North America.'],
-        ['name' => 'Everglades'         ,'location' => 'FL'  ,'date_established' => '1934-05-30' ,'area_in_acres' => 1508537.90   ,'description' => 'The largest subtropical wilderness in the United States.'],
-        ['name' => 'Glacier'            ,'location' => 'MT'  ,'date_established' => '1910-05-11' ,'area_in_acres' => 1013572.41   ,'description' => 'The park hosts 26 glaciers and 130 named lakes.'],
-        ['name' => 'Olympic'            ,'location' => 'WA'  ,'date_established' => '1938-06-29' ,'area_in_acres' => 922650.86    ,'description' => 'The Olympic Mountains overlook the Hoh and Quinault rainforests.']
+    $truncate = 'DELETE FROM passwords';
+    $dbc->exec($truncate);
+
+    $truncate = 'DELETE FROM cities';
+    $dbc->exec($truncate);
+
+    $truncate = 'DELETE FROM categories';
+    $dbc->exec($truncate);
+
+    $truncate = 'DELETE FROM posts';
+    $dbc->exec($truncate);
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    $cities = [
+        ['city' => 'Austin'],
+        ['city' => 'Dallas'],
+        ['city' => 'Houston'],
+        ['city' => 'San Antonio']
     ];
 
-    $stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :estDate, :area, :descr)');
+    $stmt = $dbc->prepare('INSERT INTO cities (city) VALUES (:city)');
 
-    foreach ($parks as $park) {
-        $stmt->bindValue(':name', $park['name'], PDO::PARAM_STR);
-        $stmt->bindValue(':location', $park['location'], PDO::PARAM_STR);
-        $stmt->bindValue(':estDate', $park['date_established'], PDO::PARAM_STR);
-        $stmt->bindValue(':area', $park['area_in_acres'], PDO::PARAM_STR);
-        $stmt->bindValue(':descr', $park['description'], PDO::PARAM_STR);
-
+    foreach ($cities as $city) {
+        $stmt->bindValue(':city', $city['city'], PDO::PARAM_STR);
         $stmt->execute();
 
         echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
+        
+    }
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    $users = [
+        ['username' => 'dgcollier'   ,'email' => 'dgcollier89@gmail.com'     ,'city_id' => '4'  ,'join_date' => date('Y-m-d')],
+        ['username' => 'cwtobias'    ,'email' => 'cwtobias@gmail.com'        ,'city_id' => '4'  ,'join_date' => date('Y-m-d')],
+        ['username' => 'jwomack'     ,'email' => 'jwomack@gmail.com'         ,'city_id' => '1'  ,'join_date' => date('Y-m-d')],
+        ['username' => 'icecastman'  ,'email' => 'icecastman@gmail.com'      ,'city_id' => '4'  ,'join_date' => date('Y-m-d')],
+        ['username' => 'ccnickens'   ,'email' => 'cclay@gmail.com'           ,'city_id' => '3'  ,'join_date' => date('Y-m-d')],
+        ['username' => 'cayers'      ,'email' => 'clayton@gmail.com'         ,'city_id' => '3'  ,'join_date' => date('Y-m-d')],
+        ['username' => 'auzi'        ,'email' => 'auzi@gmail.com'            ,'city_id' => '1'  ,'join_date' => date('Y-m-d')],
+        ['username' => 'abassett'    ,'email' => 'alanb@gmail.com'           ,'city_id' => '2'  ,'join_date' => date('Y-m-d')],
+        ['username' => 'emayberry'   ,'email' => 'elaine@gmail.com'          ,'city_id' => '2'  ,'join_date' => date('Y-m-d')]
+    ];
+
+    $stmt = $dbc->prepare('INSERT INTO users (username, email, city_id, join_date) VALUES (:username, :email, :city_id, :join_date)');
+
+    foreach ($users as $user) {
+        $stmt->bindValue(':username', $user['username'], PDO::PARAM_STR);
+        $stmt->bindValue(':email', $user['email'], PDO::PARAM_STR);
+        $stmt->bindValue(':city_id', $user['city_id'], PDO::PARAM_INT);
+        $stmt->bindValue(':join_date', $user['join_date'], PDO::PARAM_STR);
+        $stmt->execute();
+
+        echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
+        
+    }
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    $passwords = [
+        ['user_id' => 1, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
+        ['user_id' => 2, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
+        ['user_id' => 3, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
+        ['user_id' => 4, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
+        ['user_id' => 5, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
+        ['user_id' => 6, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
+        ['user_id' => 7, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
+        ['user_id' => 8, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
+        ['user_id' => 9, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99']
+    ];
+
+    $stmt = $dbc->prepare('INSERT INTO passwords (user_id, password) VALUES (:user_id, :password)');
+
+    foreach ($passwords as $password) {
+        $stmt->bindValue(':user_id', $password['user_id'], PDO::PARAM_INT);
+        $stmt->bindValue(':password', $password['password'], PDO::PARAM_STR);
+        $stmt->execute();
+
+        echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
+        
+    }
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    $categories = [
+        ['category' => 'Carpentry'],
+        ['category' => 'Welding'],
+        ['category' => 'Ruby on Rails'],
+        ['category' => 'Pastry Making'],
+        ['category' => 'Swimming'],
+        ['category' => 'Twerking']
+    ];
+
+    $stmt = $dbc->prepare('INSERT INTO categories (category) VALUES (:category)');
+
+    foreach ($categories as $category) {
+        $stmt->bindValue(':category', $category['category'], PDO::PARAM_STR);
+        $stmt->execute();
+
+        echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
+        
+    }
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////    
+    $date = new DateTime(date('Y-m-d'));
+    $date->add(new DateInterval('P21D'));
+
+    $posts = [
+        ['user_id' =>       1,
+        'city_id' =>        4,
+        'category_id' =>    6,
+        'post_date' =>      date('Y-m-d'), 'expire_date' => $date->format('Y-m-d'), 
+        'highlights' =>     'works well with n00bs, no judgment, free booze', 
+        'description' =>    'I love twerking! If you love twerking, but your twerk could use some werk, I can help you! Shoot me an email and we will set something up!', 
+        'img_url' =>        '/img/uploads/twerk.jpg'],
+
+        ['user_id' =>       5,
+        'city_id' =>        3,
+        'category_id' =>    5,
+        'post_date' =>      date('Y-m-d'), 'expire_date' => $date->format('Y-m-d'), 
+        'highlights' =>     'Cousin to Michael Phelps, Been swimming for 15 years, Look great in a speedo', 
+        'description' =>    'Like it says above, I have been swimming for a long time, it\'s in my blood. I\'ve never taught it before, but how hard can it be?', 
+        'img_url' =>        '/img/uploads/gold.png'],
+
+        ['user_id' =>       3,
+        'city_id' =>        1,
+        'category_id' =>    1,
+        'post_date' =>      date('Y-m-d'), 'expire_date' => $date->format('Y-m-d'), 
+        'highlights' =>     'Still have all my fingers, Really like wood, Built house by hand, Have awesome beard', 
+        'description' =>    'Having all my fingers is really an accomplishment when you\'ve been a carpenter as long as I have. Let\'s build stuff together.', 
+        'img_url' =>        '/img/uploads/shop.jpg'],
+
+        ['user_id' =>       8,
+        'city_id' =>        2,
+        'category_id' =>    2,
+        'post_date' =>      date('Y-m-d'), 'expire_date' => $date->format('Y-m-d'), 
+        'highlights' =>     'A&M Maritime grad, engineer, from Texas', 
+        'description' =>    'I could practically build a ship blindfolded. I\'ve spent too much time below deck recently and really need to get out.', 
+        'img_url' =>        '/img/uploads/tamugma.jpg']
+    ]; 
+
+        $stmt = $dbc->prepare('INSERT INTO posts (user_id, city_id, category_id, post_date, expire_date, highlights, description, img_url) 
+                               VALUES (:user_id, :city_id, :category_id, :post_date, :expire_date, :highlights, :description, :img_url)');
+
+        foreach ($posts as $post) {
+            $stmt->bindValue(':user_id', $post['user_id'], PDO::PARAM_INT);
+            $stmt->bindValue(':city_id', $post['city_id'], PDO::PARAM_INT);
+            $stmt->bindValue(':category_id', $post['category_id'], PDO::PARAM_INT);
+            $stmt->bindValue(':post_date', $post['post_date'], PDO::PARAM_STR);
+            $stmt->bindValue(':expire_date', $post['expire_date'], PDO::PARAM_STR);
+            $stmt->bindValue(':highlights', $post['highlights'], PDO::PARAM_STR);
+            $stmt->bindValue(':description', $post['description'], PDO::PARAM_STR);
+            $stmt->bindValue(':img_url', $post['img_url'], PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
         
     }

@@ -1,25 +1,15 @@
 <?php
-
     require_once 'toolshed_config.php';
     require_once 'db_connect.php';
-
     echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . PHP_EOL;
-
     $stmt = 'DROP TABLE IF EXISTS posts';
     $dbc->exec($stmt);
-
     $stmt = 'DROP TABLE IF EXISTS categories';
     $dbc->exec($stmt);
-
-    $stmt = 'DROP TABLE IF EXISTS passwords';
-    $dbc->exec($stmt);
-
     $stmt = 'DROP TABLE IF EXISTS users';
     $dbc->exec($stmt);
-
     $stmt = 'DROP TABLE IF EXISTS cities';
     $dbc->exec($stmt);
-
 // ////////////////////////////////////////////////////////////
     $addTable = 'CREATE TABLE cities (
         id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -27,34 +17,21 @@
         PRIMARY KEY (id),
         UNIQUE KEY city_unq (city)
     )';
-
     $dbc->exec($addTable);
-
 // ////////////////////////////////////////////////////////////
     $addTable = 'CREATE TABLE users (
         id INT UNSIGNED NOT NULL AUTO_INCREMENT,
         username VARCHAR(15) NOT NULL,
         email VARCHAR(30) NOT NULL,
+        password VARCHAR(255) NOT NULL,
         city_id INT UNSIGNED NOT NULL,
         join_date DATE NOT NULL,
         PRIMARY KEY (id),
         UNIQUE KEY user_unq (username),
         UNIQUE KEY email_unq (email)
     )';
-
     $dbc->exec($addTable);
-
-// ////////////////////////////////////////////////////////////
-    $addTable = 'CREATE TABLE passwords (
-        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-        user_id INT UNSIGNED NOT NULL,
-        password VARCHAR(50) NOT NULL,
-        PRIMARY KEY (id),
-        UNIQUE KEY user_password_unq (user_id)
-    )';
-
-    $dbc->exec($addTable);
-
+    
 // ////////////////////////////////////////////////////////////
     $addTable = 'CREATE TABLE categories (
         id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -62,9 +39,7 @@
         PRIMARY KEY (id),
         UNIQUE KEY category_unq (category)
         )';
-
     $dbc->exec($addTable);  
-
 // ////////////////////////////////////////////////////////////
     $addTable = 'CREATE TABLE posts (
         id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -78,12 +53,9 @@
         img_url VARCHAR(25),
         PRIMARY KEY (id)
     )';
-
     $dbc->exec($addTable);
-
     // $alterTable = 'ALTER TABLE posts
     // ADD FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE,
     // ADD FOREIGN KEY (city_id) REFERENCES cities (id) ON DELETE CASCADE ON UPDATE CASCADE,
     // ADD FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE ON UPDATE CASCADE';
-
     // $dbc->exec($alterTable);

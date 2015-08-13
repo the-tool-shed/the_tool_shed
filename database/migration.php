@@ -11,9 +11,6 @@
     $stmt = 'DROP TABLE IF EXISTS categories';
     $dbc->exec($stmt);
 
-    $stmt = 'DROP TABLE IF EXISTS passwords';
-    $dbc->exec($stmt);
-
     $stmt = 'DROP TABLE IF EXISTS users';
     $dbc->exec($stmt);
 
@@ -35,6 +32,7 @@
         id INT UNSIGNED NOT NULL AUTO_INCREMENT,
         username VARCHAR(15) NOT NULL,
         email VARCHAR(30) NOT NULL,
+        password VARCHAR(255) NOT NULL,
         city_id INT UNSIGNED NOT NULL,
         join_date DATE NOT NULL,
         PRIMARY KEY (id),
@@ -43,17 +41,7 @@
     )';
 
     $dbc->exec($addTable);
-
-// ////////////////////////////////////////////////////////////
-    $addTable = 'CREATE TABLE passwords (
-        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-        user_id INT UNSIGNED NOT NULL,
-        password VARCHAR(50) NOT NULL,
-        PRIMARY KEY (id),
-        UNIQUE KEY user_password_unq (user_id)
-    )';
-
-    $dbc->exec($addTable);
+    
 
 // ////////////////////////////////////////////////////////////
     $addTable = 'CREATE TABLE categories (

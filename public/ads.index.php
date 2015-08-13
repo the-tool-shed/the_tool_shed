@@ -10,8 +10,6 @@ $ads = [
     ['username'=> 'John', 'email' => 'john@gmail.com', 'city' => 'Dallas', 'subject'=> 'horse-back riding']
 
 
-
-
 ];
 
 ?>

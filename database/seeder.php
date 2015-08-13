@@ -8,9 +8,6 @@
     $truncate = 'TRUNCATE users';
     $dbc->exec($truncate);
 
-    $truncate = 'TRUNCATE passwords';
-    $dbc->exec($truncate);
-
     $truncate = 'TRUNCATE cities';
     $dbc->exec($truncate);
 
@@ -39,52 +36,54 @@
     }
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////
     $users = [
-        ['username' => 'dgcollier'   ,'email' => 'dgcollier89@gmail.com'     ,'city_id' => '4'  ,'join_date' => date('Y-m-d')],
-        ['username' => 'cwtobias'    ,'email' => 'cwtobias@gmail.com'        ,'city_id' => '4'  ,'join_date' => date('Y-m-d')],
-        ['username' => 'jwomack'     ,'email' => 'jwomack@gmail.com'         ,'city_id' => '1'  ,'join_date' => date('Y-m-d')],
-        ['username' => 'icecastman'  ,'email' => 'icecastman@gmail.com'      ,'city_id' => '4'  ,'join_date' => date('Y-m-d')],
-        ['username' => 'ccnickens'   ,'email' => 'cclay@gmail.com'           ,'city_id' => '3'  ,'join_date' => date('Y-m-d')],
-        ['username' => 'cayers'      ,'email' => 'clayton@gmail.com'         ,'city_id' => '3'  ,'join_date' => date('Y-m-d')],
-        ['username' => 'auzi'        ,'email' => 'auzi@gmail.com'            ,'city_id' => '1'  ,'join_date' => date('Y-m-d')],
-        ['username' => 'abassett'    ,'email' => 'alanb@gmail.com'           ,'city_id' => '2'  ,'join_date' => date('Y-m-d')],
-        ['username' => 'emayberry'   ,'email' => 'elaine@gmail.com'          ,'city_id' => '2'  ,'join_date' => date('Y-m-d')]
+        ['username' => 'dgcollier'   ,'email' => 'dgcollier89@gmail.com'     ,'city_id' => '4'  ,'join_date' => date('Y-m-d'), 'password' => '$2y$10$eM6/DpcgrcysxlW52q6OMO8o74I1wjAIdWIXHEAhw4OoqdE2IIEtm'],
+        ['username' => 'cwtobias'    ,'email' => 'cwtobias@gmail.com'        ,'city_id' => '4'  ,'join_date' => date('Y-m-d'), 'password' => '$2y$10$eM6/DpcgrcysxlW52q6OMO8o74I1wjAIdWIXHEAhw4OoqdE2IIEtm'],
+        ['username' => 'jwomack'     ,'email' => 'jwomack@gmail.com'         ,'city_id' => '1'  ,'join_date' => date('Y-m-d'), 'password' => '$2y$10$eM6/DpcgrcysxlW52q6OMO8o74I1wjAIdWIXHEAhw4OoqdE2IIEtm'],
+        ['username' => 'icecastman'  ,'email' => 'icecastman@gmail.com'      ,'city_id' => '4'  ,'join_date' => date('Y-m-d'), 'password' => '$2y$10$eM6/DpcgrcysxlW52q6OMO8o74I1wjAIdWIXHEAhw4OoqdE2IIEtm'],
+        ['username' => 'ccnickens'   ,'email' => 'cclay@gmail.com'           ,'city_id' => '3'  ,'join_date' => date('Y-m-d'), 'password' => '$2y$10$eM6/DpcgrcysxlW52q6OMO8o74I1wjAIdWIXHEAhw4OoqdE2IIEtm'],
+        ['username' => 'cayers'      ,'email' => 'clayton@gmail.com'         ,'city_id' => '3'  ,'join_date' => date('Y-m-d'), 'password' => '$2y$10$eM6/DpcgrcysxlW52q6OMO8o74I1wjAIdWIXHEAhw4OoqdE2IIEtm'],
+        ['username' => 'auzi'        ,'email' => 'auzi@gmail.com'            ,'city_id' => '1'  ,'join_date' => date('Y-m-d'), 'password' => '$2y$10$eM6/DpcgrcysxlW52q6OMO8o74I1wjAIdWIXHEAhw4OoqdE2IIEtm'],
+        ['username' => 'abassett'    ,'email' => 'alanb@gmail.com'           ,'city_id' => '2'  ,'join_date' => date('Y-m-d'), 'password' => '$2y$10$eM6/DpcgrcysxlW52q6OMO8o74I1wjAIdWIXHEAhw4OoqdE2IIEtm'],
+        ['username' => 'emayberry'   ,'email' => 'elaine@gmail.com'          ,'city_id' => '2'  ,'join_date' => date('Y-m-d'), 'password' => '$2y$10$eM6/DpcgrcysxlW52q6OMO8o74I1wjAIdWIXHEAhw4OoqdE2IIEtm']
     ];
 
-    $stmt = $dbc->prepare('INSERT INTO users (username, email, city_id, join_date) VALUES (:username, :email, :city_id, :join_date)');
+    $stmt = $dbc->prepare('INSERT INTO users (username, email, city_id, join_date,password) VALUES (:username, :email, :city_id, :join_date,:password)');
 
     foreach ($users as $user) {
         $stmt->bindValue(':username', $user['username'], PDO::PARAM_STR);
         $stmt->bindValue(':email', $user['email'], PDO::PARAM_STR);
         $stmt->bindValue(':city_id', $user['city_id'], PDO::PARAM_INT);
         $stmt->bindValue(':join_date', $user['join_date'], PDO::PARAM_STR);
+        $stmt->bindValue(':password', $user['password'], PDO::PARAM_STR);
+
         $stmt->execute();
 
         echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
         
     }
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    $passwords = [
-        ['user_id' => 1, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
-        ['user_id' => 2, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
-        ['user_id' => 3, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
-        ['user_id' => 4, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
-        ['user_id' => 5, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
-        ['user_id' => 6, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
-        ['user_id' => 7, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
-        ['user_id' => 8, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99'],
-        ['user_id' => 9, 'password' => '5f4dcc3b5aa765d61d8327deb882cf99']
-    ];
+    // $passwords = [
+    //     ['user_id' => 1],
+    //     ['user_id' => 2],
+    //     ['user_id' => 3],
+    //     ['user_id' => 4],
+    //     ['user_id' => 5],
+    //     ['user_id' => 6],
+    //     ['user_id' => 7],
+    //     ['user_id' => 8],
+    //     ['user_id' => 9]
+    // ];
 
-    $stmt = $dbc->prepare('INSERT INTO passwords (user_id, password) VALUES (:user_id, :password)');
+    // $stmt = $dbc->prepare('INSERT INTO passwords (user_id, password) VALUES (:user_id, :password)');
 
-    foreach ($passwords as $password) {
-        $stmt->bindValue(':user_id', $password['user_id'], PDO::PARAM_INT);
-        $stmt->bindValue(':password', $password['password'], PDO::PARAM_STR);
-        $stmt->execute();
+    // foreach ($passwords as $password) {
+    //     $stmt->bindValue(':user_id', $password['user_id'], PDO::PARAM_INT);
+    //     $stmt->bindValue(':password', $password['password'], PDO::PARAM_STR);
+    //     $stmt->execute();
 
-        echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
+    //     echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
         
-    }
+    // }
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////
     $categories = [
         ['category' => 'Carpentry'],

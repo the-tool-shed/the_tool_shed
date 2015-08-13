@@ -6,8 +6,8 @@ require_once "../views/partials/header.php";
 $posts = Ad::all();
 $cities = City::all();
 
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,9 +67,6 @@ $cities = City::all();
         .col-md-8 {
             padding-bottom: 100px;
         }
-        
-
-
     </style>
 </head>
 <body>
@@ -100,9 +97,9 @@ $cities = City::all();
                 <h3>POSTS</h3>
                 <? foreach($posts as $post): ?>
                 <div class='well'>
-                    <form method="GET" action="ads.show.php/?postID=<?= $post['id'] ?>">
-                        <a href="ads.show.php?postID=<?= $post['id'] ?>"><p><?= $post['category'] ?></p></a>
-                    </form>
+                    <a href="ads.show.php?postID=<?= $post['id'] ?>">
+                        <p><?= $post['category'] ?></p>
+                    </a>
                     <p><?= $post['city'] ?></p>
                     <p><?= $post['username'] ?></p>
                     <p><?= $post['post_date'] ?></p>

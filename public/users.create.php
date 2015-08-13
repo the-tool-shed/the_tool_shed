@@ -5,15 +5,13 @@ var_dump(Input::get("username"));
 $cities = City::all();
 if($_POST && (Input::get("password") == Input::get("confirm-password"))) {
 
-
 $user = new User();
 $user->username = Input::get("username");
 $user->email = Input::get("email");
 $user->password = password_hash(Input::get("password"),PASSWORD_DEFAULT);
-$user->city_id = Input::get("city_id");
+$user->city_id = 4;
 $user->join_date = date('Y-m-d');
 $user->save();
-echo "saved????";
 } else {
 	echo "Login Failed";
 }
@@ -60,13 +58,13 @@ echo "saved????";
 			<input class='user-inputs' type='email' name='email' placeholder='Enter Email Address' required="required" ><br>
 			<input class='user-inputs' type='password' name='password' placeholder='Enter Password' required="required" ><br>
 			<input class='user-inputs' type='password' name='confirm-password' placeholder='Confirm Password' required="required" >
-			<select name="cities">
+			<!-- <select name="cities">
 	            <option></option>
 	            <? foreach ($cities as $city): ?>
 	            	<option value="<? $city['city']?>"><? $city['city'] ?></option>
 	            <? endforeach; ?>
 	          
-            </select>
+            </select> -->
 			<input type="submit" class="btn" id='submitbtn'>
 		</form>
 	</div>

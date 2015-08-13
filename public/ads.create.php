@@ -8,7 +8,7 @@ require_once "../views/partials/header.php";
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Create An Ad</title>
+	<title>Create A POST</title>
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<style type="text/css">
 	.user-inputs {
@@ -52,15 +52,15 @@ require_once "../views/partials/header.php";
 	<div class='jumbotron'>
 	<h1>Become A Teacher</h1>
 	<h2>Knowledge is Power</h2>
-		<form>
+		<form method='POST'>
 		<input class='user-inputs' type='text' name='email' placeholder='Enter Email Address' required="required" ><br>
 		<input class='user-inputs' type='text' name='subject' placeholder='Enter Subject' required="required" autofocus ><br>
 		<textarea  class='user-inputs' id='postParagraph' placeholder='Enter A Description of Your Course'></textarea>
-		<form action="http://www.example.com/upload.php" method="post" class='image-form'>
+		<!-- <form action="http://www.example.com/upload.php" method="post" class='image-form'>
 			<p>Upload Your Course Image</p>
 			<input type="file" name="user-song"/><br/> 
 			<input type="submit" value="Upload" />
-		</form>
+		</form> -->
 		<input type="submit" class="btn" id='submitbtn'>
 		</form>
 	</div>

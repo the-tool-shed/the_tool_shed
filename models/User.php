@@ -59,6 +59,7 @@ class User extends BaseModel
                     email = :email
                     city_id = :city_id
                     join_date = :join_date
+                    password = ;password
                     WHERE id = :id';
 
         $stmt = self::$dbc->prepare($query);
@@ -66,6 +67,7 @@ class User extends BaseModel
         $stmt->bindValue(':email',      $this->attributes['email'],        PDO::PARAM_STR);
         $stmt->bindValue(':city_id',    $this->attributes['city_id'],      PDO::PARAM_INT);
         $stmt->bindValue(':join_date',  $this->attributes['join_date '],   PDO::PARAM_STR);
+        $stmt->bindValue(':password',   $this->attributes['password '],   PDO::PARAM_STR);
         
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -73,13 +75,14 @@ class User extends BaseModel
 
     public function insert()
     {
-        $query = 'INSERT INTO users (username, email, city_id, join_date) 
-            VALUES (:username, :email, :city_id, :join_date)';
+        $query = 'INSERT INTO users (username, email, city_id, join_date,password) 
+            VALUES (:username, :email, :city_id, :join_date,:password)';
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':username',   $this->attributes['username'],     PDO::PARAM_STR);
         $stmt->bindValue(':email',      $this->attributes['email'],        PDO::PARAM_STR);
         $stmt->bindValue(':city_id',    $this->attributes['city_id'],      PDO::PARAM_INT);
         $stmt->bindValue(':join_date',  $this->attributes['join_date'],   PDO::PARAM_STR);
+        $stmt->bindValue(':password',   $this->attributes['password'],   PDO::PARAM_STR);
 
         $stmt->execute();
     }

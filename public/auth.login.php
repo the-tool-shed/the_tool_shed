@@ -1,7 +1,4 @@
 <?php  
-    session_start();
-    $sessionId = session_id();
-
     require_once "../bootstrap.php";
     require_once "../views/partials/header.php";
 

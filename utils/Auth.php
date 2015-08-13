@@ -59,6 +59,12 @@ class Auth
         exit();  
     }
 
+    public static function homeRedirect ()
+    {
+        header("location: /ads.index.php");
+        exit();
+    }
+
     public static function login ()
     {
         header("location: /index.php");

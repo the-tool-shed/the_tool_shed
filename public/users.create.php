@@ -1,10 +1,4 @@
 <?php
-<<<<<<< HEAD
-require_once "../bootstrap.php";
-var_dump(Input::get("username"));
-$cities = City::all();
-if($_POST && (Input::get("password") == Input::get("confirm-password"))) {
-=======
 
 require_once "../bootstrap.php";
 var_dump(Input::get("username"));
@@ -13,25 +7,17 @@ $cities = City::all();
 
 if($_POST && (Input::get("password") == Input::get("confirm-password"))) {
 
->>>>>>> 343ebb6db0681e129c677585640f90aad6ac3ebc
 $user = new User();
 $user->username = Input::get("username");
 $user->email = Input::get("email");
 $user->password = password_hash(Input::get("password"),PASSWORD_DEFAULT);
-$user->city_id = Input::get("city_id");
+$user->city_id = 4;
 $user->join_date = date('Y-m-d');
 $user->save();
-echo "saved????";
 } else {
 	echo "Login Failed";
 }
-<<<<<<< HEAD
-=======
 
-
-
-
->>>>>>> 343ebb6db0681e129c677585640f90aad6ac3ebc
 ?>
 <!DOCTYPE html>
 <html>
@@ -74,13 +60,13 @@ echo "saved????";
 			<input class='user-inputs' type='email' name='email' placeholder='Enter Email Address' required="required" ><br>
 			<input class='user-inputs' type='password' name='password' placeholder='Enter Password' required="required" ><br>
 			<input class='user-inputs' type='password' name='confirm-password' placeholder='Confirm Password' required="required" >
-			<select name="cities">
+			<!-- <select name="cities">
 	            <option></option>
 	            <? foreach ($cities as $city): ?>
 	            	<option value="<? $city['city']?>"><? $city['city'] ?></option>
 	            <? endforeach; ?>
 	          
-            </select>
+            </select> -->
 			<input type="submit" class="btn" id='submitbtn'>
 		</form>
 	</div>

@@ -4,8 +4,6 @@ require_once 'BaseModel.php';
 
 class User extends BaseModel
 {
-    protected static $table = 'users';
-
     public static function all()
     {
         // get all rows
@@ -24,7 +22,7 @@ class User extends BaseModel
     public static function find($username)
     {
         self::dbConnect();
-        $query = 'SELECT * FROM users WHERE username = :username';
+        $query = 'SELECT username, email, city, join_date FROM users WHERE username = :username';
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->execute();

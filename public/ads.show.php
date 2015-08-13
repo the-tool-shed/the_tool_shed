@@ -3,7 +3,16 @@
 require_once "../bootstrap.php";
 require_once "../views/partials/header.php";
 
- ?>
+if (Input::has('postID')) {
+    $id = Input::getNumber('postID');
+    $details = Ad::findById($id);
+    $getHighlights = Ad::getHighlights($id);
+    $highlights = explode(', ', $getHighlights[0]['highlights']);
+} else {
+    Auth::homeRedirect();
+}   
+
+?>
 
 <!DOCTYPE html>
  <html>
@@ -69,6 +78,10 @@ require_once "../views/partials/header.php";
         .jumbotron {
         margin-top: 70px;
         }
+
+        #expires {
+            margin-left: 20px;
+        }
     </style>
  </head>
  <body>
@@ -79,12 +92,12 @@ require_once "../views/partials/header.php";
         <div class="col-md-4"></div>
         <div class = "col-md-8">
             <div>
-                <h1 id="postTitle">Carpentry</h1>
-                <h5>San Antonio</h5>
+                <h1 id="postTitle"><?= $details[0]['category'] ?></h1>
+                <h5><?= $details[0]['city'] ?></h5>
             </div>
 
             <div id="postImg">
-                <img class="center-block" src="/img/shed1.jpg">
+                <img class="center-block" src="<?= $details[0]['img_url'] ?>">
             </div>
         </div>
     </div>
@@ -94,27 +107,16 @@ require_once "../views/partials/header.php";
         <div id="postHighlights" class="col-md-4">
             <h3>Highlights</h3>
             <ul>
-                <li>ipsum dolor sit</li>
-                <li>ullamco laboris nisi ut aliquip</li>
-                <li>dolore eu fugiat nulla</li>
-                <li>deserunt mollit anim</li>
+                <? foreach ($highlights as $highlight): ?>
+                    <li><?= $highlight ?></li>
+                <? endforeach; ?>
             </ul>
-            <h4>Posted: (Date)</h4>
-            <h4>Expires: (Date)</h4>
         </div>
         <div id="postParagraph" class="col-md-8">
             <h3>About this class</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <div id="postUserRating">
-                <p>
-                    <span id="username">username </span> has a  <span id="rating"> 9.8 </span>  rating out of 10
-                </p>
-            </div>
+            <p><?= $details[0]['description'] ?></p>
+            <h4>Mentor: <?= $details[0]['username'] ?></h4>
+            <h6>Posted: <?= $details[0]['post_date'] ?><span id="expires">Expires: <?= $details[0]['expire_date'] ?></span></h6>
         </div>
     </div>
 </div>

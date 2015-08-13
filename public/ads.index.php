@@ -4,6 +4,7 @@ require_once "../bootstrap.php";
 require_once "../views/partials/header.php";
 
 $posts = Ad::all();
+$cities = City::all();
 
 ?>
 <!DOCTYPE html>
@@ -82,10 +83,10 @@ $posts = Ad::all();
                     <input type='text' placeholder='Search by Username'>
                     <br>
                     <select name="cities">
-                        <option value="San Antonio">San Antonio</option>
-                        <option value="Houston">Houston</option> 
-                        <option value="Dallas">Dallas</option>
-                        <option value="Austin">Austin</option>
+                            <option></option>
+                        <? foreach ($cities as $city): ?>
+                            <option value="<?= $city['city'] ?>"><?= $city['city'] ?></option>
+                        <? endforeach; ?>
                     </select>
                     <br>
                     <button>Search</button>
@@ -98,10 +99,12 @@ $posts = Ad::all();
                 <h3>POSTS</h3>
                 <? foreach($posts as $post): ?>
                 <div class='well'>
-                    <p><?=$post['category'] ?></p>
-                    <p><?=$post['city'] ?></p>
-                    <p><?=$post['username'] ?></p>
-                    <p><?=$post['post_date'] ?></p>
+                    <form method="GET" action="ads.show.php/?postID=<?= $post['id'] ?>">
+                        <a href="ads.show.php?postID=<?= $post['id'] ?>"><p><?= $post['category'] ?></p></a>
+                    </form>
+                    <p><?= $post['city'] ?></p>
+                    <p><?= $post['username'] ?></p>
+                    <p><?= $post['post_date'] ?></p>
                 </div>
                 <? endforeach; ?>
             </div>

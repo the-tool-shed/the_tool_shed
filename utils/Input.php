@@ -57,7 +57,7 @@ class Input
         return $value;
     }
 
-    public static function getNumber($key, $min, $max)
+    public static function getNumber($key, $min = 0, $max = 99999)
     {
         $value = str_replace(',', '', static::get($key));
 

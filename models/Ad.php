@@ -4,21 +4,45 @@ require_once 'BaseModel.php';
 
 class Ad extends BaseModel
 {
-    protected static $table = 'posts';
-
     public static function all()
     {
-        // get all rows
         self::dbConnect();
-        $stmt = self::$dbc->query(
-            'SELECT u.username AS username, c.city AS city, ca.category AS category,
-                p.post_date, p.expire_date, p.highlights, p.description, p.img_url FROM posts AS p 
+        $query = 'SELECT u.username, c.city, ca.category,
+                p.id, p.post_date, p.expire_date, p.highlights, p.description, p.img_url FROM posts AS p 
                 LEFT JOIN cities AS c ON p.city_id = c.id
                 LEFT JOIN users AS u ON p.user_id = u.id
-                LEFT JOIN categories AS ca ON p.category_id = ca.id'
-        );
+                LEFT JOIN categories AS ca ON p.category_id = ca.id';
+        $stmt = self::$dbc->prepare($query);
+        $stmt->execute();
 
-        // assign results to variable
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public static function findById($id)
+    {
+        self::dbConnect();
+        $query = 'SELECT u.username, c.city, ca.category,
+                p.id, p.post_date, p.expire_date, p.highlights, p.description, p.img_url FROM posts AS p 
+                LEFT JOIN cities AS c ON p.city_id = c.id
+                LEFT JOIN users AS u ON p.user_id = u.id
+                LEFT JOIN categories AS ca ON p.category_id = ca.id WHERE p.id = :id';
+        $stmt = self::$dbc->prepare($query);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public static function getHighlights($id)
+    {
+        self::dbconnect();
+        $query = 'SELECT highlights FROM posts WHERE id = :id';
+        $stmt = self::$dbc->prepare($query);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }

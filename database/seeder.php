@@ -4,6 +4,7 @@
     echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . PHP_EOL;
     $truncate = 'TRUNCATE users';
     $dbc->exec($truncate);
+
     $truncate = 'TRUNCATE cities';
     $dbc->exec($truncate);
     $truncate = 'TRUNCATE categories';
@@ -36,13 +37,17 @@
         ['username' => 'abassett'    ,'email' => 'alanb@gmail.com'           ,'city_id' => '2'  ,'join_date' => date('Y-m-d'), 'password' => '$2y$10$eM6/DpcgrcysxlW52q6OMO8o74I1wjAIdWIXHEAhw4OoqdE2IIEtm'],
         ['username' => 'emayberry'   ,'email' => 'elaine@gmail.com'          ,'city_id' => '2'  ,'join_date' => date('Y-m-d'), 'password' => '$2y$10$eM6/DpcgrcysxlW52q6OMO8o74I1wjAIdWIXHEAhw4OoqdE2IIEtm']
     ];
+
+
     $stmt = $dbc->prepare('INSERT INTO users (username, email, city_id, join_date,password) VALUES (:username, :email, :city_id, :join_date,:password)');
+
     foreach ($users as $user) {
         $stmt->bindValue(':username', $user['username'], PDO::PARAM_STR);
         $stmt->bindValue(':email', $user['email'], PDO::PARAM_STR);
         $stmt->bindValue(':city_id', $user['city_id'], PDO::PARAM_INT);
         $stmt->bindValue(':join_date', $user['join_date'], PDO::PARAM_STR);
         $stmt->bindValue(':password', $user['password'], PDO::PARAM_STR);
+
         $stmt->execute();
         echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
         
@@ -59,11 +64,16 @@
     //     ['user_id' => 8],
     //     ['user_id' => 9]
     // ];
+
+
     // $stmt = $dbc->prepare('INSERT INTO passwords (user_id, password) VALUES (:user_id, :password)');
+
+
     // foreach ($passwords as $password) {
     //     $stmt->bindValue(':user_id', $password['user_id'], PDO::PARAM_INT);
     //     $stmt->bindValue(':password', $password['password'], PDO::PARAM_STR);
     //     $stmt->execute();
+
     //     echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
         
     // }

@@ -1,8 +1,19 @@
 <?php
+<<<<<<< HEAD
 require_once "../bootstrap.php";
 var_dump(Input::get("username"));
 $cities = City::all();
 if($_POST && (Input::get("password") == Input::get("confirm-password"))) {
+=======
+
+require_once "../bootstrap.php";
+var_dump(Input::get("username"));
+
+$cities = City::all();
+
+if($_POST && (Input::get("password") == Input::get("confirm-password"))) {
+
+>>>>>>> 343ebb6db0681e129c677585640f90aad6ac3ebc
 $user = new User();
 $user->username = Input::get("username");
 $user->email = Input::get("email");
@@ -14,6 +25,13 @@ echo "saved????";
 } else {
 	echo "Login Failed";
 }
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 343ebb6db0681e129c677585640f90aad6ac3ebc
 ?>
 <!DOCTYPE html>
 <html>

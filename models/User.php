@@ -71,6 +71,7 @@ class User extends BaseModel
         $stmt->bindValue(':city_id',    $this->attributes['city_id'],      PDO::PARAM_INT);
         $stmt->bindValue(':join_date',  $this->attributes['join_date'],   PDO::PARAM_STR);
         $stmt->bindValue(':password',   $this->attributes['password'],   PDO::PARAM_STR);
+
         $stmt->execute();
     }
     public function delete()

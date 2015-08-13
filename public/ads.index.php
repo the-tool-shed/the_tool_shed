@@ -6,6 +6,7 @@ require_once "../views/partials/header.php";
 $posts = Ad::all();
 $cities = City::all();
 
+
 ?>
 <!DOCTYPE html>
 <html>

@@ -6,6 +6,7 @@
     $dbc->exec($stmt);
     $stmt = 'DROP TABLE IF EXISTS categories';
     $dbc->exec($stmt);
+
     $stmt = 'DROP TABLE IF EXISTS users';
     $dbc->exec($stmt);
     $stmt = 'DROP TABLE IF EXISTS cities';
@@ -30,8 +31,11 @@
         UNIQUE KEY user_unq (username),
         UNIQUE KEY email_unq (email)
     )';
+
+
     $dbc->exec($addTable);
     
+
 // ////////////////////////////////////////////////////////////
     $addTable = 'CREATE TABLE categories (
         id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,

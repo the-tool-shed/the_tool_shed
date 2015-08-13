@@ -3,16 +3,7 @@
 require_once "../bootstrap.php";
 require_once "../views/partials/header.php";
 
-$ads = [
-
-    ['username'=> 'Peter', 'email' => 'peter@gmail.com', 'city' => 'San Antonio', 'subject'=> 'coding'],
-    ['username'=> 'Bjorn', 'email' => 'bjorn@gmail.com', 'city' => 'Houston', 'subject'=> 'boating'],
-    ['username'=> 'John', 'email' => 'john@gmail.com', 'city' => 'Dallas', 'subject'=> 'horse-back riding']
-
-
-
-
-];
+$posts = Ad::all();
 
 ?>
 <!DOCTYPE html>
@@ -80,47 +71,42 @@ $ads = [
     </style>
 </head>
 <body>
-        <div class="container-fluid">
-            <div class="col-md-4">
-                <div class="span2">
-                    <h3>FILTER</h3>
-                    <form>
-                        <input type='text' placeholder='Search by Subject'>
-                        <br>
-                        <input type='text' placeholder='Search by Username'>
-                        <br>
-                        <select name="cities">
-                            <option value="San Antonio">San Antonio</option>
-                            <option value="Houston">Houston</option> 
-                            <option value="Dallas">Dallas</option>
-                            <option value="Austin">Austin</option>
-                        </select>
-                        <br>
-                        <button>Search</button>
-                    </form>
-                </div>
+    <div class="container-fluid">
+        <!-- SIDEBAR: search & filter -->
+        <div class="col-md-4">
+            <div class="span2">
+                <h3>FILTER</h3>
+                <form>
+                    <input type='text' placeholder='Search by Subject'>
+                    <br>
+                    <input type='text' placeholder='Search by Username'>
+                    <br>
+                    <select name="cities">
+                        <option value="San Antonio">San Antonio</option>
+                        <option value="Houston">Houston</option> 
+                        <option value="Dallas">Dallas</option>
+                        <option value="Austin">Austin</option>
+                    </select>
+                    <br>
+                    <button>Search</button>
+                </form>
             </div>
-                <div class='col-md-8'>
-                    <div class="span10">
-                        <h3>TEACHERS</h3>
-                        <div class="well">
-                            <a href="ads.show.php">Here are all of the ads...</a>
-                        </div>
-                        <? foreach($ads as $ad): ?>
-                        <div class='well'>
-                            <p><?=$ad['username'] ?></p>
-                            <a href="https://en.wikipedia.org/wiki/Peter_Bjorn_and_John"<p><?=$ad['email'] ?></p></a>
-                            <p><?=$ad['city'] ?></p>
-                            <p><?=$ad['subject'] ?></p>
-                        </div>
-                        <? endforeach; ?>
-                        <div class="well">
-                            <p>Here is the last ad...</p>
-                        </div>
-                    </div>
-                </div>
-
         </div>
+        <!-- POSTS: show all ads or filtered results -->
+        <div class='col-md-8'>
+            <div class="span10">
+                <h3>POSTS</h3>
+                <? foreach($posts as $post): ?>
+                <div class='well'>
+                    <p><?=$post['category'] ?></p>
+                    <p><?=$post['city'] ?></p>
+                    <p><?=$post['username'] ?></p>
+                    <p><?=$post['post_date'] ?></p>
+                </div>
+                <? endforeach; ?>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

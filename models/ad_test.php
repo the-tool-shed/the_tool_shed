@@ -16,11 +16,11 @@ require_once 'Ad.php';
 
 // $ad->save();
 
-// $ads = Ad::all();
+$ads = Ad::all();
 
-// var_dump($ads);
+var_dump($ads);
 
-$ad = Ad::findById(2);
-var_dump($ad);
+// $ad = Ad::findById(2);
+// var_dump($ad);
 
-echo $ad[0]['post_date'] . PHP_EOL;
+// echo $ad[0]['post_date'] . PHP_EOL;

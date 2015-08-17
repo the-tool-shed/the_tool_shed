@@ -39,12 +39,11 @@ class Ad extends BaseModel
         return $result;
     }
 
-    public static function catergorySearch($category)
+    public static function categorySearch($category)
     {
         self::dbConnect();
-        $query = "SELECT * FROM posts AS p 
-            JOIN categories AS c ON c.id = p.category_id
-            WHERE c.category LIKE '%:category%'"; 
+        $query = "SELECT * FROM posts 
+            WHERE category LIKE '%:category%'"; 
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':category', $category, PDO::PARAM_STR);
         $stmt->execute();
@@ -62,9 +61,8 @@ class Ad extends BaseModel
     public static function usernameSearch($username)
     {
         self::dbConnect();
-        $query = "SELECT * FROM posts AS p 
-            JOIN users AS u ON u.id = p.user_id
-            WHERE u.username LIKE '%:username%'"; 
+        $query = "SELECT * FROM posts
+            WHERE username LIKE '%:username%'"; 
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
@@ -82,9 +80,8 @@ class Ad extends BaseModel
     public static function citiesSearch($city)
     {
         self::dbConnect();
-        $query = "SELECT * FROM posts AS p 
-            JOIN cities AS c ON c.id = p.city_id
-            WHERE c.city LIKE '%:city%'"; 
+        $query = "SELECT * FROM posts
+            WHERE city LIKE '%:city%'"; 
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':city', $city, PDO::PARAM_STR);
         $stmt->execute();
@@ -117,9 +114,9 @@ class Ad extends BaseModel
     public function update()
     {   
         $query = 'UPDATE posts
-                    SET user_id = :user_id
-                    city_id = :city_id
-                    category_id = :category_id
+                    SET username = :username
+                    city = :city
+                    category = :category
                     post_date = :post_date
                     expire_date = :expire_date
                     highlights = :highlights
@@ -128,9 +125,9 @@ class Ad extends BaseModel
                     WHERE id = :id';
 
         $stmt = self::$dbc->prepare($query);
-        $stmt->bindValue(':user_id',        $this->attributes['user_id'],      PDO::PARAM_INT);
-        $stmt->bindValue(':city_id',        $this->attributes['city_id'],      PDO::PARAM_INT);
-        $stmt->bindValue(':category_id',    $this->attributes['category_id'],  PDO::PARAM_INT);
+        $stmt->bindValue(':username',       $this->attributes['username'],     PDO::PARAM_STR);
+        $stmt->bindValue(':city',           $this->attributes['city'],         PDO::PARAM_STR);
+        $stmt->bindValue(':category',       $this->attributes['category'],     PDO::PARAM_STR);
         $stmt->bindValue(':post_date',      $this->attributes['post_date'],    PDO::PARAM_STR);
         $stmt->bindValue(':expire_date',    $this->attributes['expire_date'],  PDO::PARAM_STR);
         $stmt->bindValue(':highlights',     $this->attributes['highlights '],  PDO::PARAM_STR);
@@ -143,12 +140,12 @@ class Ad extends BaseModel
 
     public function insert()
     {
-        $query = 'INSERT INTO posts (user_id, city_id, category_id, post_date, expire_date, highlights, description, img_url) 
-            VALUES (:user_id, :category_id, :city_id, :post_date, :expire_date, :highlights, :description, :img_url)';
+        $query = 'INSERT INTO posts (username, city, category, post_date, expire_date, highlights, description, img_url) 
+            VALUES (:username, :city, :category, :post_date, :expire_date, :highlights, :description, :img_url)';
         $stmt = self::$dbc->prepare($query);
-        $stmt->bindValue(':user_id',      $this->attributes['user_id'],     PDO::PARAM_INT);
-        $stmt->bindValue(':city_id',      $this->attributes['city_id'],     PDO::PARAM_INT);
-        $stmt->bindValue(':category_id',  $this->attributes['category_id'], PDO::PARAM_INT);
+        $stmt->bindValue(':username',     $this->attributes['username'],    PDO::PARAM_STR);
+        $stmt->bindValue(':city',         $this->attributes['city'],        PDO::PARAM_STR);
+        $stmt->bindValue(':category',     $this->attributes['category'],    PDO::PARAM_STR);
         $stmt->bindValue(':post_date',    $this->attributes['post_date'],   PDO::PARAM_STR);
         $stmt->bindValue(':expire_date',  $this->attributes['expire_date'], PDO::PARAM_STR);
         $stmt->bindValue(':highlights',   $this->attributes['highlights'],  PDO::PARAM_STR);

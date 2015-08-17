@@ -8,17 +8,34 @@ $date->add(new DateInterval('P21D'));
 
 // var_dump($_POST);
 if($_POST) {
-$ad = new Ad();
-$ad->username = $_SESSION['LOGGED_IN_USER'];
-$ad->city = Input::get('city');
-$ad->category = Input::get('category');
-$ad->post_date = date('Y-m-d');
-$ad->expire_date = $date->format('Y-m-d');
-$ad->highlights = Input::get('highlights');
-$ad->description = Input::get('description');
-$ad->img_url = '/img/uploads/shop.jpg';
-$ad->save();
+	if($_FILES) {
+
+	    $uploads_directory = "/img/uploads/";
+
+	    $filename = $uploads_directory . basename($_FILES['img_upload']['name']);
+
+	    if(move_uploaded_file($_FILES['img_upload']['tmp_name'], $filename)) {
+	        echo '<p>The file ' . basename($_FILES['img_upload']['name']) . ' has been uploaded.</p>';
+	    } else {
+	        echo '<p>Sorry, there was an error uploading your file.</p>';
+	    }
+	}
+
+	$ad = new Ad();
+	$ad->username = $_SESSION['LOGGED_IN_USER'];
+	$ad->category = Input::get('category');
+	$ad->city = Input::get('city');
+	$ad->post_date = date('Y-m-d');
+	$ad->expire_date = $date->format('Y-m-d');
+	$ad->highlights = Input::get('highlights');
+	$ad->description = Input::get('description');
+	$ad->img_url = $filename;
+	$ad->save();
 }
+
+var_dump($ad);
+var_dump($_POST);
+var_dump($_FILES);
 
 
 ?>
@@ -69,14 +86,14 @@ $ad->save();
 	<div class='jumbotron'>
 	<h1>Become A Teacher</h1>
 	<h2>Knowledge is Power</h2>
-		<form method='POST'>
-		<input class='user-inputs' type='text' name='city' placeholder='Enter City' required="required" ><br>
-		<input class='user-inputs' type='text' name='category' placeholder='Enter Category' required="required" ><br>
-		<input class='user-inputs' type='text' name='highlights' placeholder='Enter Highlights' required="required" ><br>
-		<input class='user-inputs' type='text' name='description' placeholder='Enter Description' required="required" autofocus ><br>
-		<input type="submit" class="btn" id='submitbtn'>
+		<form method='POST' action="ads.create.php" enctype="multipart/form-data">
+			<input class='user-inputs' type='text' name='category' placeholder='Enter Category' required="required" autofocus><br>
+			<input class='user-inputs' type='text' name='city' placeholder='Enter City' required="required"><br>
+			<input class='user-inputs' type='text' name='highlights' placeholder='Enter Highlights' required="required"><br>
+			<input class='user-inputs' type='text' name='description' placeholder='Enter Description' required="required"><br>
+       		<input class='user-inputs' type='file' name="img_upload">
+	        <input type="submit" class="btn btn-md" id="submitBtn">
 		</form>
 	</div>
-
 </body>
 </html>

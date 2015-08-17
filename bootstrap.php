@@ -7,4 +7,3 @@ require_once "utils/Auth.php";
 require_once "views/partials/footer.php";
 require_once "models/Ad.php";
 require_once "models/User.php";
-require_once "models/City.php";

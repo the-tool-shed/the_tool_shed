@@ -46,7 +46,7 @@
             <div id='center-search'>
                 <form>
                     <input type='text' class='search-input'>
-                    <button class="btn">Search</button>
+                    <a href='ads.index.php'><button class="btn">Search</button></a>
                 </form>
             </div>
             <div id='right-side'>

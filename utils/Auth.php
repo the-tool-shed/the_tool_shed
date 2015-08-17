@@ -13,9 +13,9 @@ class Auth
 
         $getUser = User::findLogin($username);
         // var_dump($getUser);
-        if ($username == $getUser->attributes[0]['username'] && password_verify($password, $getUser->attributes[0]['password'])) {
+        if($username == $getUser->username && password_verify($password, $getUser->password)) {
             $_SESSION['LOGGED_IN_USER'] = $username;
-            $_SESSION['USER_ID'] = $getUser->attributes[0]['id'];
+            $_SESSION['USER_ID'] = $getUser->id;
             $log1 = new Log();
             $log1->logInfo("User $username logged in.");
         } else {
@@ -56,6 +56,22 @@ class Auth
         session_destroy();
 
         Auth::redirect();  
+    }
+    public static function logoutForInfoChange ()
+    {
+        $_SESSION = array();
+
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+    
+        session_destroy();
+        header('location:auth.login.php');
+ 
     }
 
     public static function redirect ()

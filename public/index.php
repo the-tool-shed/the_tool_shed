@@ -63,7 +63,6 @@ require_once "../views/partials/indexheader.php";
     </style>
 </head>
 <body>
-    
     <div class='jumbotron'>
         <h1 id="indexTitle">Tool Shed</h1>
         <form id="mainForm" action="/ads.index.php">

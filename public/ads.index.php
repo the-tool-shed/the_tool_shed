@@ -78,20 +78,12 @@ $cities = City::all();
         <div class="col-md-4">
             <div class="span2">
                 <h3>FILTER</h3>
-                <form method="GET" action="/ads.index.php">
-                    <input id="categorySearch" name="cat" type='text' placeholder='I want to learn...'>
-                    <br>
-                    <input id="usernameSearch" name="user" type='text' placeholder='I want to learn from...'>
-                    <br>
-                    <select id="citySearch" name="city">
-                            <option></option>
-                        <? foreach ($cities as $city): ?>
-                            <option value="<?= $city['city'] ?>"><?= $city['city'] ?></option>
-                        <? endforeach; ?>
-                    </select>
-                    <br>
-                    <input id="searchSubmit" type="submit">
-                </form>
+
+                <form id="live-search" action="" class="styled" method="post">
+                    <fieldset>
+                        <input type="text" class="text-input" id="filter" value="" />
+                        <span id="filter-count"></span>
+                    </fieldset>
             </div>
         </div>
         <!-- POSTS: show all ads or filtered results -->
@@ -99,16 +91,16 @@ $cities = City::all();
             <div class="span10">
                 <h3>POSTS</h3>
                 <? foreach($posts as $post): ?>
-                <div class='well'>
-                    <a href="ads.show.php?postID=<?= $post['id'] ?>">
-                        <p class="category"><?= $post['category'] ?></p>
-                    </a>
-                    <p class="city"><?= $post['city'] ?></p>
-                    <p class="username"><?= $post['username'] ?></p>
-                    <p class="post_date"><?= $post['post_date'] ?></p>
-                </div>
+                    <ul class="list-group commentlist" id="livefilter-list">
+                        <li class="category list-group-item">
+                            <a href="ads.show.php?postID=<?= $post['id'] ?>"><?= $post['category'] ?></a>
+                        </li>
+                        <li class="city list-group-item"><?= $post['city'] ?></li>
+                        <li class="username list-group-item"><?= $post['username'] ?></li>
+                        <li class="post_date list-group-item"><?= $post['post_date'] ?></li>
+                    </ul>
                 <? endforeach; ?>
-            </div>s
+            </div>
         </div>
     </div>
 

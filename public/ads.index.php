@@ -13,6 +13,9 @@ $cities = City::all();
 <head>
     <title>Tool Shed</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/livefilter.jquery.js"></script>  
+    <script type="text/javascript" src="/js/post_sort.js"></script>
     <style type="text/css">
         body {
             text-align: center;
@@ -75,19 +78,19 @@ $cities = City::all();
         <div class="col-md-4">
             <div class="span2">
                 <h3>FILTER</h3>
-                <form>
-                    <input type='text' placeholder='Search by Subject'>
+                <form method="GET" action="/ads.index.php">
+                    <input id="categorySearch" name="cat" type='text' placeholder='I want to learn...'>
                     <br>
-                    <input type='text' placeholder='Search by Username'>
+                    <input id="usernameSearch" name="user" type='text' placeholder='I want to learn from...'>
                     <br>
-                    <select name="cities">
+                    <select id="citySearch" name="city">
                             <option></option>
                         <? foreach ($cities as $city): ?>
                             <option value="<?= $city['city'] ?>"><?= $city['city'] ?></option>
                         <? endforeach; ?>
                     </select>
                     <br>
-                    <button>Search</button>
+                    <input id="searchSubmit" type="submit">
                 </form>
             </div>
         </div>
@@ -98,14 +101,14 @@ $cities = City::all();
                 <? foreach($posts as $post): ?>
                 <div class='well'>
                     <a href="ads.show.php?postID=<?= $post['id'] ?>">
-                        <p><?= $post['category'] ?></p>
+                        <p class="category"><?= $post['category'] ?></p>
                     </a>
-                    <p><?= $post['city'] ?></p>
-                    <p><?= $post['username'] ?></p>
-                    <p><?= $post['post_date'] ?></p>
+                    <p class="city"><?= $post['city'] ?></p>
+                    <p class="username"><?= $post['username'] ?></p>
+                    <p class="post_date"><?= $post['post_date'] ?></p>
                 </div>
                 <? endforeach; ?>
-            </div>
+            </div>s
         </div>
     </div>
 

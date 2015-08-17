@@ -3,6 +3,8 @@
 require_once "../bootstrap.php";
 require_once "../views/partials/header.php";
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -38,9 +40,8 @@ require_once "../views/partials/header.php";
 </head>
 <body>
 	<div class='jumbotron'>
-	<h1>Welcome <?=$_SESSION['LOGGED_IN_USER']?></h1>
-	<a href="users.edit.php"><h2>Manage Your Profile Here</h2></a>
-		
+	<h1>Welcome <?=$_SESSION['LOGGED_IN_USER']?>!</h1>
+	<a href="users.edit.php"><h2>Manage Your Profile Here</h2></a>	
 	</div>
 
 

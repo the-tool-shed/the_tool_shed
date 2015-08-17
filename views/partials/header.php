@@ -52,7 +52,7 @@
             <div id='right-side'>
                 <?php if(AUTH::check()): ?>
                     <div id='welcome'>
-                        <a href ='users.show.php'><p>Welcome <?=$_SESSION['LOGGED_IN_USER']?></p></a>
+                        <a href ='users.show.php'><p>Welcome <?=$_SESSION['LOGGED_IN_USER']?>!</p></a>
                     </div>
                     <div id='logout'>
                         <a href='auth.logout.php'>Log Out</a>

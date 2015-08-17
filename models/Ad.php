@@ -7,11 +7,7 @@ class Ad extends BaseModel
     public static function all()
     {
         self::dbConnect();
-        $query = 'SELECT u.username, c.city, ca.category,
-                p.id, p.post_date, p.expire_date, p.highlights, p.description, p.img_url FROM posts AS p 
-                LEFT JOIN cities AS c ON p.city_id = c.id
-                LEFT JOIN users AS u ON p.user_id = u.id
-                LEFT JOIN categories AS ca ON p.category_id = ca.id';
+        $query = 'SELECT * FROM posts';
         $stmt = self::$dbc->prepare($query);
         $stmt->execute();
 
@@ -22,11 +18,7 @@ class Ad extends BaseModel
     public static function findById($id)
     {
         self::dbConnect();
-        $query = 'SELECT u.username, c.city, ca.category,
-                p.id, p.post_date, p.expire_date, p.highlights, p.description, p.img_url FROM posts AS p 
-                LEFT JOIN cities AS c ON p.city_id = c.id
-                LEFT JOIN users AS u ON p.user_id = u.id
-                LEFT JOIN categories AS ca ON p.category_id = ca.id WHERE p.id = :id';
+        $query = 'SELECT * FROM posts WHERE id = :id';
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();

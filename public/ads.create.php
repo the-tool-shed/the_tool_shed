@@ -9,14 +9,14 @@ $date->add(new DateInterval('P21D'));
 // var_dump($_POST);
 if($_POST) {
 $ad = new Ad();
-$ad->user_id = 1; //comes from session
-$ad->city_id = 4; //select html input
-$ad->category_id = 3; //select html input
+$ad->username = $_SESSION['LOGGED_IN_USER'];
+$ad->city = Input::get('city');
+$ad->category = Input::get('category');
 $ad->post_date = date('Y-m-d');
 $ad->expire_date = $date->format('Y-m-d');
 $ad->highlights = Input::get('highlights');
 $ad->description = Input::get('description');
-$ad->img_url = '/img/uploads/tamugma.jpg';
+$ad->img_url = '/img/uploads/shop.jpg';
 $ad->save();
 }
 
@@ -70,8 +70,10 @@ $ad->save();
 	<h1>Become A Teacher</h1>
 	<h2>Knowledge is Power</h2>
 		<form method='POST'>
-		<input class='user-inputs' type='text' name='highlights' placeholder='Enter Course Highlights' required="required" ><br>
-		<input class='user-inputs' type='text' name='description' placeholder='Enter Course Description' required="required" autofocus ><br>
+		<input class='user-inputs' type='text' name='city' placeholder='Enter City' required="required" ><br>
+		<input class='user-inputs' type='text' name='category' placeholder='Enter Category' required="required" ><br>
+		<input class='user-inputs' type='text' name='highlights' placeholder='Enter Highlights' required="required" ><br>
+		<input class='user-inputs' type='text' name='description' placeholder='Enter Description' required="required" autofocus ><br>
 		<input type="submit" class="btn" id='submitbtn'>
 		</form>
 	</div>

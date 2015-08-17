@@ -40,8 +40,10 @@ require_once "../views/partials/header.php";
 </head>
 <body>
 	<div class='jumbotron'>
-	<h1>Welcome <?=$_SESSION['LOGGED_IN_USER']?>!</h1>
-	<a href="users.edit.php"><h2>Manage Your Profile Here</h2></a>	
+		<h1>Welcome, <?=$_SESSION['LOGGED_IN_USER']?>!</h1>
+		<a href="users.edit.php"><h2>Manage Your Profile Here</h2></a>
+		<a href="ads.create.php"><h2>Add a New Post</h2></a>
+		<a href="ads.edit.php"><h2>Edit an Existing Post</h2></a>
 	</div>
 
 

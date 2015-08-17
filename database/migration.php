@@ -43,7 +43,9 @@
         expire_date DATE NOT NULL,
         highlights VARCHAR(200) NOT NULL,
         description TEXT NOT NULL,
-        img_url VARCHAR(25),
-        PRIMARY KEY (id)
+        img_url VARCHAR(50),
+        PRIMARY KEY (id),
+        UNIQUE KEY user_category ("username", "category")
     )';
+
     $dbc->exec($addTable);

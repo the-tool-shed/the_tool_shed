@@ -30,6 +30,21 @@ class User extends BaseModel
         }
         return $instance;
     }
+    public static function findLogin($username)
+    {
+        self::dbConnect();
+        $query = 'SELECT id,username, password FROM users WHERE username = :username';
+        $stmt = self::$dbc->prepare($query);
+        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $instance = null;
+        if ($result) {
+            $instance = new static;
+            $instance->attributes = $result;
+        }
+        return $instance;
+    }
     public function save()
     {
         self::dbConnect();

@@ -10,8 +10,12 @@ class Auth
 
     public static function attempt ($username, $password)
     {
-        if (self::escape($username == 'guest') && password_verify(self::escape($password), self::$password)) {
+
+        $getUser = User::findLogin($username);
+        // var_dump($getUser);
+        if ($username == $getUser->attributes[0]['username'] && password_verify($password, $getUser->attributes[0]['password'])) {
             $_SESSION['LOGGED_IN_USER'] = $username;
+            $_SESSION['USER_ID'] = $getUser->attributes[0]['id'];
             $log1 = new Log();
             $log1->logInfo("User $username logged in.");
         } else {
@@ -19,6 +23,7 @@ class Auth
             $log1->logError("User $username failed to log in.");
         }
     }
+            // var_dump($_SESSION);
 
     public static function check ()
     {
@@ -67,7 +72,7 @@ class Auth
 
     public static function login ()
     {
-        header("location: /index.php");
+        header('location:users.show.php');
         exit();
     }
 

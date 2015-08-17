@@ -2,15 +2,20 @@
     require_once "../bootstrap.php";
     require_once "../views/partials/header.php";
 
-    if (Input::has('username') && Input::has('password')) {
-        Auth::attempt(Input::get('username'), Input::get('password'));
-        if (!Auth::check()) {
-            $message = 'Username and password did not match.';
-        } else if (Auth::check()) {
-            Auth::login();
-        }
+    if(Auth::check()) {
+        header('location:users.show.php');
     } else {
-        $message = 'Please enter your username and password.';
+
+        if (Input::has('username') && Input::has('password')) {
+            Auth::attempt(Input::get('username'), Input::get('password'));
+            if (!Auth::check()) {
+                $message = 'Username and password did not match.';
+            } else if (Auth::check()) {
+                Auth::login();
+            }
+        } else {
+            $message = 'Please enter your username and password.';
+        }
     }
 ?>
 
@@ -41,7 +46,6 @@
     </style>
 </head>
 <body>
-
     <form method="POST">
         <div class='jumbotron'>
             <div class="container">

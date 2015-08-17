@@ -1,7 +1,7 @@
 <?php
 
 require_once "../bootstrap.php";
-var_dump(Input::get("username"));
+// var_dump(Input::get("username"));
 $cities = City::all();
 if($_POST && (Input::get("password") == Input::get("confirm-password"))) {
 
@@ -57,14 +57,7 @@ $user->save();
 			<input class='user-inputs' type='text' name='username' placeholder='Enter Username' required="required" autofocus ><br>
 			<input class='user-inputs' type='email' name='email' placeholder='Enter Email Address' required="required" ><br>
 			<input class='user-inputs' type='password' name='password' placeholder='Enter Password' required="required" ><br>
-			<input class='user-inputs' type='password' name='confirm-password' placeholder='Confirm Password' required="required" >
-			<!-- <select name="cities">
-	            <option></option>
-	            <? foreach ($cities as $city): ?>
-	            	<option value="<? $city['city']?>"><? $city['city'] ?></option>
-	            <? endforeach; ?>
-	          
-            </select> -->
+			<input class='user-inputs' type='password' name='confirm-password' placeholder='Confirm Password' required="required">
 			<input type="submit" class="btn" id='submitbtn'>
 		</form>
 	</div>

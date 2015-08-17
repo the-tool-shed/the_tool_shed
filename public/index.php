@@ -83,8 +83,8 @@ require_once "../views/partials/indexheader.php";
     </style>
 </head>
 <body>
-    
     <div class='jumbotron' id="jumbo1">
+
         <h1 id="indexTitle">Tool Shed</h1>
         <a href="ads.index.php"><button class="btn btn-lg btn-warning">ENTER</button></a>
     </div>

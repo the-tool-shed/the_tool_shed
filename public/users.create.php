@@ -1,8 +1,7 @@
 <?php
 
 require_once "../bootstrap.php";
-// var_dump(Input::get("username"));
-$cities = City::all();
+var_dump(Input::get("username"));
 if($_POST && (Input::get("password") == Input::get("confirm-password"))) {
 
 $user = new User();
@@ -12,8 +11,12 @@ $user->password = password_hash(Input::get("password"),PASSWORD_DEFAULT);
 $user->city_id = 4;
 $user->join_date = date('Y-m-d');
 $user->save();
+Auth::attempt(Input::get("username"), Input::get("password"));
 } else {
 	echo "Login Failed";
+}
+if(Auth::check()){
+header('location:users.show.php');
 }
 
 ?>

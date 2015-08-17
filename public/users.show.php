@@ -3,6 +3,8 @@
 require_once "../bootstrap.php";
 require_once "../views/partials/header.php";
 
+
+
 ?>
 
 <!DOCTYPE html>

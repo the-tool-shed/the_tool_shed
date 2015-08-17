@@ -1,7 +1,8 @@
 <?php
-
+require_once "../bootstrap.php";
 require_once "../views/partials/header.php";
 require_once "../views/partials/footer.php";
+
 
 
 ?>
@@ -41,7 +42,7 @@ require_once "../views/partials/footer.php";
 <body>
 	<div class='jumbotron'>
 	<h1>Edit Your Information<small></small></h1>
-		<form>
+		<form action='users.show.php' method='POST'>
 			<input class='user-inputs' type='text' name='username' placeholder='EDIT Username' required="required" autofocus ><br>
 			<input class='user-inputs' type='email' name='email' placeholder='EDIT Email Address' required="required" ><br>
 			<input class='user-inputs' type='password' name='password' placeholder='EDIT Password' required="required" ><br>

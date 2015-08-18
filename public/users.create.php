@@ -13,7 +13,6 @@ $user->join_date = date('Y-m-d');
 $user->save();
 Auth::attempt(Input::get("username"), Input::get("password"));
 } else {
-	echo "Login Failed";
 }
 if(Auth::check()){
 header('location:users.show.php');
@@ -45,6 +44,7 @@ header('location:users.show.php');
 	}
 	.jumbotron {
 		margin-top: 70px;
+		box-shadow: 5px 5px 5px 5px #777777;
 	}
 	#submitbtn {
 		margin-left: 70px;

@@ -79,6 +79,8 @@ $title = $details[0]['category'] . ' in ' . $details[0]['city'];
 
         .jumbotron {
             margin-top: 70px;
+            box-shadow: 5px 5px 5px 5px #777777;
+            margin-bottom: 70px;
         }
 
         #expires {

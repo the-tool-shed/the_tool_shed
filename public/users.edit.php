@@ -50,6 +50,7 @@ if(!$thisUser) {
 	}
 	.jumbotron {
 		margin-top: 70px;
+		box-shadow: 5px 5px 5px 5px #777777;
 	}
 	#submitbtn {
 		margin-left: 70px;

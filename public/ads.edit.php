@@ -69,6 +69,7 @@ if($_POST) {
 	#jumbo1 {
 		margin-top: 70px;
 		height: 25%
+		box-shadow: 5px 5px 5px 5px #777777;
 	}
 
 	#jumbo2 {

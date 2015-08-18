@@ -32,7 +32,7 @@ class User extends BaseModel
     public static function findLogin($username)
     {
         self::dbConnect();
-        $query = 'SELECT id,username, password,email FROM users WHERE username = :username';
+        $query = 'SELECT id, username, password, email FROM users WHERE username = :username';
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
@@ -59,10 +59,10 @@ class User extends BaseModel
     public function update()
     {   
         $query = 'UPDATE users
-                    SET username = :username
-                    email = :email
-                    password = :password
-                    join_date = :join_date
+                    SET username = :username,
+                    email = :email,
+                    password = :password,
+                    join_date = :join_date,
                     WHERE id = :id';
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':username',   $this->attributes['username'],     PDO::PARAM_STR);

@@ -6,21 +6,21 @@ require_once "../views/partials/header.php";
 $date = new DateTime(date('Y-m-d'));
 $date->add(new DateInterval('P21D'));
 
-// var_dump($_POST);
+if($_FILES) {
+
+    $uploads_directory = "img/uploads/";
+
+    $filename = $uploads_directory . basename($_FILES['somefile']['name']);
+
+    if(move_uploaded_file($_FILES['somefile']['tmp_name'], $filename)) {
+        echo '<p>The file ' . basename($_FILES['somefile']['name']) . ' has been uploaded.</p>';
+    } else {
+        echo '<p>Sorry, there was an error uploading your file.</p>';
+    }
+	
+}
+
 if($_POST) {
-	if($_FILES) {
-
-	    $uploads_directory = "/img/uploads/";
-
-	    $filename = $uploads_directory . basename($_FILES['img_upload']['name']);
-
-	    if(move_uploaded_file($_FILES['img_upload']['tmp_name'], $filename)) {
-	        echo '<p>The file ' . basename($_FILES['img_upload']['name']) . ' has been uploaded.</p>';
-	    } else {
-	        echo '<p>Sorry, there was an error uploading your file.</p>';
-	    }
-	}
-
 	$ad = new Ad();
 	$ad->username = $_SESSION['LOGGED_IN_USER'];
 	$ad->category = Input::get('category');
@@ -32,11 +32,6 @@ if($_POST) {
 	$ad->img_url = $filename;
 	$ad->save();
 }
-
-var_dump($ad);
-var_dump($_POST);
-var_dump($_FILES);
-
 
 ?>
 <!DOCTYPE html>
@@ -86,12 +81,12 @@ var_dump($_FILES);
 	<div class='jumbotron'>
 	<h1>Become A Teacher</h1>
 	<h2>Knowledge is Power</h2>
-		<form method='POST' action="ads.create.php" enctype="multipart/form-data">
+		<form method='POST' action="#" enctype="multipart/form-data">
 			<input class='user-inputs' type='text' name='category' placeholder='Enter Category' required="required" autofocus><br>
 			<input class='user-inputs' type='text' name='city' placeholder='Enter City' required="required"><br>
 			<input class='user-inputs' type='text' name='highlights' placeholder='Enter Highlights' required="required"><br>
 			<input class='user-inputs' type='text' name='description' placeholder='Enter Description' required="required"><br>
-       		<input class='user-inputs' type='file' name="img_upload">
+       		<input class='user-inputs' type='file' name="somefile">
 	        <input type="submit" class="btn btn-md" id="submitBtn">
 		</form>
 	</div>

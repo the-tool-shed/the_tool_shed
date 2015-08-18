@@ -13,14 +13,17 @@ require_once 'Ad.php';
 // $ad->expire_date = $date->format('Y-m-d');
 // $ad->highlights = 'My mom is a chef, I have more money than sense, Texas forever';
 // $ad->description = 'I will teach you how to make yummy pastries.';
-
 // $ad->save();
 
-$ads = Ad::all();
-
-var_dump($ads);
+// $ads = Ad::all();
+// var_dump($ads);
 
 // $ad = Ad::findById(2);
 // var_dump($ad);
-
 // echo $ad[0]['post_date'] . PHP_EOL;
+
+$myPosts = Ad::usernameSearch('dgcollier');
+var_dump($myPosts);
+
+// $byId = Ad::findById(2);
+// var_dump($byId);

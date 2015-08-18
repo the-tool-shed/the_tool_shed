@@ -49,33 +49,19 @@ class Ad extends BaseModel
         $stmt->execute();
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $instance = null;
-        if ($result) {
-            $instance = new static;
-            $instance->attributes = $result;
-        }
-
-        return $instance;
+        return $result;
     }
     public static function usernameSearch($username)
     {
         self::dbConnect();
-        $query = "SELECT * FROM posts
-            WHERE username LIKE '%:username%'"; 
+        $query = 'SELECT * FROM posts
+            WHERE username LIKE :username'; 
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $instance = null;
-        if ($result) {
-            $instance = new static;
-            $instance->attributes = $result;
-        }
-
-        return $instance;
+        return $result;
     }
     public static function citiesSearch($city)
     {
@@ -114,13 +100,13 @@ class Ad extends BaseModel
     public function update()
     {   
         $query = 'UPDATE posts
-                    SET username = :username
-                    city = :city
-                    category = :category
-                    post_date = :post_date
-                    expire_date = :expire_date
-                    highlights = :highlights
-                    description = :description
+                    SET username = :username,
+                    city = :city,
+                    category = :category,
+                    post_date = :post_date,
+                    expire_date = :expire_date,
+                    highlights = :highlights,
+                    description = :description,
                     img_url = :img_url
                     WHERE id = :id';
 

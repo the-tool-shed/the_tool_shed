@@ -18,6 +18,8 @@ $posts = Ad::all();
     <style type="text/css">
         body {
             text-align: center;
+            border-style: outset;
+            box-shadow: 5px 5px 5px 5px #777777;
         }
 
         header div {
@@ -41,6 +43,7 @@ $posts = Ad::all();
         #center-search {
             padding:0px;
             display: inline-block;
+            
         }
 
         button {

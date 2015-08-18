@@ -76,7 +76,9 @@ if (Input::has('postID')) {
             margin-left: 30px;
         }
         .jumbotron {
-        margin-top: 70px;
+            margin-top: 70px;
+            box-shadow: 5px 5px 5px 5px #777777;
+            margin-bottom: 70px;
         }
 
         #expires {

@@ -12,11 +12,14 @@ require_once "../views/partials/indexheader.php";
     <style type="text/css">
         body {
             text-align: center;
+            border-style: outset;
         }
         #indexTitle {
             text-align: center;
             font-size: 4em;
             margin-top: 20%;
+            color:white;
+            background-color: black;
         }
 
         #mainForm {
@@ -89,19 +92,18 @@ require_once "../views/partials/indexheader.php";
         <a href="ads.index.php"><button class="btn btn-lg btn-warning">ENTER</button></a>
     </div>
     <div class='jumbotron' id="jumbo2">
-        <h2>Section A</h2>
-        <ul>
-            <li>Thing 1</li>
-            <li>Thing 2</li>
-            <li>Thing 3</li>
-        </ul>
+        <h2>What is the Tool Shed?</h2>
+        <p>A space to learn.</p>
+        <p>A space to teach.</p>
     </div>
     <div class='jumbotron' id="jumbo3">
-        <h2>Section B</h2>
-        <p>Paragraph here</p>
-        <p>Paragraph here</p>
-        <p>Paragraph here</p>
-        <p>Paragraph here</p>
+        <h2>Why we're different</h2>
+        <p>Here at the Tool Shed, we've created a space to learn essential "tools" that are not present in the traditional K-12 system.<p>
+            <p>From learning the basics of carpentry to learning advanced algorithmic equations, a Tool Shed user can find anything.</p>
+        <p>Want to learn a unique new skill? <a href="users.create.php">Sign up</a> now.</p>
+        <p>Have a unique skill you'd like to teach? <a href="users.create.php">Sign up</a> now and make a post!</p>
+
+        </p>
     </div>
 </body>
 </html>

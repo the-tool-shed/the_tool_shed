@@ -11,13 +11,13 @@ if (Input::has('postID')) {
 } else {
     Auth::homeRedirect();
 }   
-
+$title = $details[0]['category'] . ' in ' . $details[0]['city'];
 ?>
 
 <!DOCTYPE html>
- <html>
- <head>
-    <title></title>
+<html>
+<head>
+    <title><?= $title ?></title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <style type="text/css">
         #backBtn {
@@ -71,10 +71,12 @@ if (Input::has('postID')) {
             text-align: left;
             padding-left: 30px;
         }
+
         h5 {
             clear:left;
             margin-left: 30px;
         }
+
         .jumbotron {
             margin-top: 70px;
             box-shadow: 5px 5px 5px 5px #777777;
@@ -84,9 +86,10 @@ if (Input::has('postID')) {
         #expires {
             margin-left: 20px;
         }
+
     </style>
- </head>
- <body>
+</head>
+<body>
 
     <button class="btn btn-lg" id="backBtn" onclick="goBack()">Back</button>
 <div class='jumbotron'>
